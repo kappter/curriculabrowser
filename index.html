@@ -83,11 +83,18 @@
     function loadCSV(file) {
       errorMessage.classList.add('hidden');
       lessonCard.innerHTML = '<p class="text-center text-gray-500">Loading...</p>';
+      console.log(`Starting to load CSV: ${file}`);
       Papa.parse(file, {
         download: true,
         header: true,
         complete: function(results) {
-          lessons = results.data.filter(lesson => lesson.Day && lesson['Strand/Standard'] && lesson.Title && lesson.Concepts && lesson.Starter && lesson.Description);
+          console.log(`CSV parsing complete. Total rows received: ${results.data.length}`);
+          lessons = results.data.filter((lesson, index) => {
+            const isValid = lesson.Day && lesson['Strand/Standard'] && lesson.Title && lesson.Concepts && lesson.Starter && lesson.Description;
+            console.log(`Row ${index + 1}: ${isValid ? 'Valid' : 'Invalid'}, Data: ${JSON.stringify(lesson)}`);
+            return isValid;
+          });
+          console.log(`Filtered valid lessons: ${lessons.length}`);
           if (lessons.length === 0) {
             showError('No valid lessons found in the CSV file.');
             return;
@@ -97,6 +104,7 @@
           renderLesson();
         },
         error: function(error) {
+          console.error(`Error loading CSV: ${error.message}`);
           showError('Error loading CSV file. Please check the file path or server configuration.');
         }
       });
