@@ -1,0 +1,41 @@
+Day,Strand/Standard,Title,Concepts,Starter
+1,Strand 1 / Standard 1,Programming Languages,Interpreted vs Compiled, High-level vs Low-level,Gallery Walk: Examples of code in various languages; students guess which are compiled vs interpreted
+2,Strand 1 / Standard 2,Using an IDE,IDE features, compile/run, debugging, syntax vs runtime vs logic errors,Quick IDE Tour: Pair-share what each button or menu might do before demoing
+3,Strand 1 / Performance,IDE Project,Create a program using IDE,Mini Debugging Challenge: Find bugs in sample IDE output
+4,Strand 2 / Standard 1,Programming Style Basics,White space, naming conventions, constants vs variables,**Read My Code!** (5-7 mins): Show two very short code snippets (pseudocode or actual simple code). One should be poorly formatted/named, the other well-formatted. Ask students which is easier to read and why.
+5,Strand 2 / Standard 1,Identifier Formats,camelCase, snake_case, PascalCase,Naming Game: Rename sloppy variables using proper conventions
+6,Strand 2 / Standard 1,Output Formatting,Decimal places, dollar signs, sentence formatting,**Making it Pretty** (5-7 mins): Provide students with raw data (e.g., a number like 1234.5678, a name and an age). Ask them how they would present this data to a user to make it easily understandable and look professional (e.g., as a currency, as a sentence).
+7,Strand 2 / Standard 2,Software Development Life Cycle,Requirements, Design, Implementation, Testing, Release,Sticky Note Flowchart: Build out SDLC stages on wall posters
+8,Strand 2 / Standard 2,Designing Algorithms,UML diagrams, pseudocode, top-down design,UML Sketch-Off: Draw a flowchart or pseudocode for to-do app
+9,Strand 2 / Performance,Development Project,Apply SDLC to a complete program,SDLC Group Sprint: Apply all stages to a calculator project
+10,Strand 3 / Standard 1,Input/Output Basics,Input vs Output, I/O Devices,Input/Output Sorting: Categorize real-world examples of input vs output
+11,Strand 3 / Standard 2,Data Types Overview,Boolean, Integer, Float, String,**Information Sort** (5-7 mins): Provide a list of various pieces of information (e.g., "your age," "your name," "is it raining?," "your GPA"). Ask students how they would categorize each piece of information based on its nature.
+12,Strand 3 / Standard 2,Declaring & Initializing Variables,Assignment, declaration vs initialization,**The Empty Box** (5-7 mins): Bring in an empty box and a toy. Explain that declaring is like labeling the box, and initializing is like putting the toy inside. Discuss why you might want to label an empty box.
+13,Strand 3 / Standard 3,Arithmetic Operators,Addition, Subtraction, Multiplication, Division, Modulus,Arithmetic Showdown: Solve math with code and compare to math class logic
+14,Strand 3 / Standard 3,Comparison & Logic Operators,<, >, ==, AND, OR, NOT,Logic Card Sort: Match operators to examples and true/false results
+15,Strand 3 / Standard 3,Order of Operations,PEMMDAS, parenthesis, operator precedence,PEMMDAS Race: Students order expressions by precedence under time limit
+16,Strand 3 / Standard 4,Expressions,Operators + Operands, Syntactic correctness,Expression Match: Match valid and invalid expressions to explanations
+17,Strand 3 / Standard 5,Functions & Scope,Function use, local vs global variables,**Chef's Station** (5-7 mins): Imagine a restaurant kitchen. The 'sauce station' only knows about the ingredients for sauces (local). The 'pantry' knows about all ingredients (global). How does this help organize the kitchen?
+18,Strand 3 / Standard 5,Built-in vs User-defined Functions,Arguments, Return values,**Toolbox Analogy** (5-7 mins): Show a multi-tool vs. a custom-built tool. Discuss how some tools (built-in functions) are readily available, while others (user-defined functions) you create for specific needs.
+19,Strand 3 / Standard 6,Complex Data Types,Strings, Arrays, Lists,**Organizing Your Stuff** (5-7 mins): Ask students how they organize their school supplies. Do they keep individual pencils (simple) or a whole pencil case with multiple items (complex)? Relate this to how computers store different kinds of data.
+20,Strand 3 / Performance,Mini Project: Data & Functions,Write program using all key concepts,Concept Map Sprint: Build a wall chart showing links between Strand 3 topics
+21,Strand 4 / Standard 1,IF Statements,IF, ELSE IF, ELSE logic, nesting,Code Snippet Judge: Rank IF statements on readability and logic
+22,Strand 4 / Standard 2,Loops: For Loops,Loop structure, initial/condition/update,Loop Build Challenge: Write a simple for-loop from a visual diagram
+23,Strand 4 / Standard 2,Loops: While Loops,While-loop logic, use cases,While-Loop Maze: Follow a condition through a loop ‘path’
+24,Strand 4 / Standard 2,Nested Loops & Loop Exit,Break, condition met/failed, infinite loops,Loop Ending Escape Room: Identify what ends each loop scenario
+25,Strand 4 / Standard 3,Complex Conditions,Relational + Logical operators in loops,Complex Condition Mad Lib: Build silly but valid loop conditions
+26,Strand 4 / Performance,Control Structures Project,Apply IFs and Loops in programs,IF/LOOP Bingo: Win by spotting correct use in live code walkthroughs
+27,Strand 5 / Standard 1,Careers in Programming,Team roles: leader, analyst, developer, SME,Career Hat Day: Match personality traits to programming job roles
+28,Strand 5 / Standard 1,Traits of Programmers,Problem solving, collaboration, creativity,Team Role Drama: Perform a mini-sketch for each team role
+29,Strand 5 / Standard 1,Pathways and Trends,Related career paths, industry trends,Trend Debate: AI programming—boon or risk?
+30,Strand 5 / Standard 2,Ethics in Programming,Piracy, privacy, copyright, automation,Ethics Dilemma Cards: What should a dev do in questionable scenarios?
+31,Strand 5 / Standard 2,Impact of Software,Workplace and societal implications,Impact Pyramid: Stack how software affects individual → global society
+32,Strand 5 / Performance,Career Exploration Project,Present on a chosen software career,Career Pitch: 60-sec elevator pitch for a dream tech job
+33,Workplace Skills,Professional Skills,Communication, Teamwork, Accountability,Skill Scenarios: Match professional traits to success stories
+34,Review,Vocabulary & Syntax Practice,Key terms, syntax review,Syntax Bee: Students fix syntax on-the-fly in speed rounds
+35,Review,Problem Solving Strategies,Decomposition, pattern recognition,Pattern Detectives: Spot repeat logic in real-life code examples
+36,Assessment,Midterm Project,Apply Strands 3–4 in a complete program,Midterm Launch: Gallery of project prompts; students pick and plan
+37,Assessment,Certification Practice,Prep for Skill Certification Test #820,Mock Cert Test: Time-based multiple choice practice
+38,Assessment,Final Project Design,Student-driven coding project design,Project Planner: Fill out design doc with pseudocode + diagrams
+39,Assessment,Final Project Implementation,Code, test, and present project,Code Studio: Build, test, and peer review projects
+40,Wrap-up,Reflection & Showcase,Review progress and present learning outcomes,Reflection Wheel: Spin and speak—what did you learn, struggle with, enjoy?

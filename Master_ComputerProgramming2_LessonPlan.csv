@@ -1,0 +1,41 @@
+Day,Strand/Standard,Title,Concepts,Starter
+1,Strand 1 / Standard 1,Introduction to Static Arrays,Declare, initialize static arrays,Think of a way to store multiple numbers, like test scores. How would you do it without arrays? Now, how can arrays help?
+2,Strand 1 / Standard 1,Accessing and Modifying Arrays,Accessing elements by index, modifying elements,If you have an array of numbers, how do you change the third number?
+3,Strand 1 / Standard 1,Input and Output with Arrays,Reading input into arrays, printing arrays,How would you ask the user to enter 5 numbers and store them in an array?
+4,Strand 1 / Standard 1,Iterating Through Arrays,Using loops to traverse arrays,Why might you need to go through each element of an array one by one?
+5,Strand 1 / Standard 1,Sorting Arrays,Basic sorting techniques, like bubble sort,How would you arrange a list of numbers in order from smallest to largest?
+6,Strand 1 / Standard 2,Introduction to Dynamic Arrays,Declare dynamic arrays, add elements,What if you don't know how many elements you need in advance? How can dynamic arrays help?
+7,Strand 1 / Standard 2,Modifying Dynamic Arrays,Adding, removing elements, accessing elements,How would you add a new item to a dynamic list, like adding a new friend to a contact list?
+8,Strand 1 / Standard 2,Operations on Dynamic Arrays,Search, iterate dynamic arrays,Why might you need to search for an element in a dynamic array?
+9,Strand 1 / Standard 3,Introduction to Strings,Declare, initialize strings,How is a string like a sequence of characters, like your name?
+10,Strand 1 / Standard 3,String Comparison and Length,Compare strings, find length,How would you check if two words are the same, like "cat" and "dog"?
+11,Strand 1 / Standard 3,String Operations: Copy and Concatenate,Copy strings, concatenate strings,How would you combine your first and last name into one string?
+12,Strand 1 / Standard 3,Advanced String Operations,Locate substring, insert characters,How would you find a word inside a sentence, like "the" in "the cat"?
+13,Strand 3 / Standard 1,Understanding Scope,Local vs global variables, function scope,If you have a variable inside a function, can you use it outside? Why or why not?
+14,Strand 3 / Standard 1,Declaring and Accessing Variables,Declare local/global variables, access scope,Where should you declare a variable if you need it in multiple functions?
+15,Strand 3 / Standard 2,Functions and Parameters,Define functions with parameters, understand arguments,Think of a recipe: what are the ingredients, and how are they like function parameters?
+16,Strand 3 / Standard 2,Functions with Return Values,Return statements, functions with outputs,What does a function return if it has no return statement?
+17,Strand 3 / Standard 2,Default Parameters in Functions,Functions with default parameters,How can default parameters make functions more flexible?
+18,Strand 3 / Standard 3,Functional Decomposition,Identify redundant code, abstract into functions,Code cleanup: Highlight redundant code in a sample program, discuss how to simplify.
+19,Strand 3 / Standard 3,Characteristics of Well-Defined Functions,Well-defined functions, readability, maintainability,Why is it important for functions to be easy to read and maintain?
+20,Strand 3 / Review,Functions Review,Review scope, parameters, return values, exceptions,Flashcard review: Match function concepts to definitions in pairs.
+21,Strand 4 / Standard 1,Using Built-in Classes,Instantiate objects, use methods,Think of a car: what can you do with a car object, like drive or honk?
+22,Strand 4 / Standard 1,Data Members and Member Functions,Use data members, call member functions,How are data members like properties of an object, like a car's color?
+23,Strand 4 / Standard 2,Creating User-Defined Classes,Create classes, use data members, constructors,How would you create a class for a student, with name and grade?
+24,Strand 4 / Standard 2,Constructors and Member Functions,Define constructors, implement member functions,Why do we need a constructor when creating a class?
+25,Strand 4 / Review,OOP Review,Review classes, objects, methods, inheritance,Group discussion: What are the key differences between classes and objects?
+26,Strand 2 / Standard 1,Introduction to File Handling,Create, store data in sequential files,How would you save a list of names to a file for later use?
+27,Strand 2 / Standard 1,Reading and Writing Files,Retrieve, update data in files,How would you read data from a file and display it?
+28,Strand 2 / Standard 1,File Operations,Update, manage file data,What happens if you try to read from a file that doesn't exist?
+29,Strand 5 / Standard 1,Code Comprehension: Tracing,Trace code execution, understand flow,Follow the flow: Trace a simple program and predict its output.
+30,Strand 5 / Standard 1,Debugging with IDEs,Use IDEs for debugging, identify errors,Error detective: Identify errors in a sample code snippet, categorize them.
+31,Strand 5 / Standard 1,Testing for Robustness,Test code for edge cases, ensure reliability,How would you test a program to make sure it handles invalid inputs?
+32,Strand 6 / Standard 1,Project Planning,Formalize specifications, choose data structures,What kind of program do you want to create? What features should it have?
+33,Strand 6 / Standard 1,Designing the Project,Design algorithms, write pseudocode,Let's sketch out the steps your program will take.
+34,Strand 6 / Standard 1,Implementing the Project,Code, test, document the project,Code studio: Build, test, and peer review projects.
+35,Strand 6 / Standard 2,Teamwork in Projects,Divide tasks, coordinate, meet deadlines,Team role play: Assign roles like leader, coder, and discuss responsibilities.
+36,Strand 7 / Standard 1,Ethics in Software Development,Software reliability, societal impact,Have you heard of any software that caused problems because it wasn't reliable? What happened?
+37,Strand 7 / Standard 1,Security and Privacy,Protect information, discuss security issues,How can software protect user data, like passwords?
+38,Strand 7 / Standard 1,Automation and Society,Effects of automation, ethical considerations,Discuss: How does automation affect jobs, both positively and negatively?
+39,Strand 8 / Standard 1,Careers in Programming,Different roles in a programming team,What kind of job would you like to have in the tech industry? Why?
+40,Strand 8 / Standard 1,Trends and Pathways,Investigate trends, career pathways in programming,Trend debate: Is AI programming a boon or a risk for future careers?

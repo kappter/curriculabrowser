@@ -1,0 +1,155 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computer Programming Lesson Plans</title>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+  <div class="container mx-auto p-4">
+    <h1 class="text-3xl font-bold text-center mb-6">Computer Programming Lesson Plans</h1>
+    <div class="mb-4">
+      <label for="courseSelect" class="block text-lg font-medium text-gray-700">Select Course:</label>
+      <select id="courseSelect" class="mt-1 block w-full max-w-xs p-2 border border-gray-300 rounded-md">
+        <option value="Master_ComputerProgramming1_LessonPlan.csv">Computer Programming 1</option>
+        <option value="Master_ComputerProgramming2_LessonPlan.csv">Computer Programming 2</option>
+      </select>
+    </div>
+    <div id="lessonTable" class="bg-white shadow-md rounded-lg overflow-hidden">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+          <tr>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Day</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Strand/Standard</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Concepts</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Starter</th>
+          </tr>
+        </thead>
+        <tbody id="lessonBody" class="bg-white divide-y divide-gray-200"></tbody>
+      </table>
+    </div>
+    <div class="mt-4 flex justify-between">
+      <button id="prevPage" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:bg-gray-300">Previous</button>
+      <span id="pageInfo" class="text-lg font-medium"></span>
+      <button id="nextPage" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:bg-gray-300">Next</button>
+    </div>
+  </div>
+
+  <script>
+    const courseSelect = document.getElementById('courseSelect');
+    const lessonBody = document.getElementById('lessonBody');
+    const prevPage = document.getElementById('prevPage');
+    const nextPage = document.getElementById('nextPage');
+    const pageInfo = document.getElementById('pageInfo');
+    
+    let lessons = [];
+    let currentPage = 1;
+    const lessonsPerPage = 10;
+
+    function loadCSV(file) {
+      Papa.parse(file, {
+        download: true,
+        header: true,
+        complete: function(results) {
+          lessons = results.data;
+          currentPage = 1;
+          renderLessons();
+        },
+        error: function(error) {
+          console.error('Error loading CSV:', error);
+          lessonBody.innerHTML = '<tr><td colspan="5" class="text-center text-red-500">Error loading lessons. Please check the CSV file.</td></tr>';
+        }
+      });
+    }
+
+    function renderLessons() {
+      lessonBody.innerHTML = '';
+      const start = (currentPage - 1) * lessonsPerPage;
+      const end = start + lessonsPerPage;
+      const paginatedLessons = lessons.slice(start, end);
+
+      paginatedLessons.forEach(lesson => {
+        if (lesson.Day && lesson['Strand/Standard'] && lesson.Title && lesson.Concepts && lesson.Starter) {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td class="px-6 py-4 whitespace-nowrap">${lesson.Day}</td>
+            <td class="px-6 py-4">${lesson['Strand/Standard']}</td>
+            <td class="px-6 py-4">${lesson.Title}</td>
+            <td class="px-6 py-4">${lesson.Concepts}</td>
+            <td class="px-6 py-4">${lesson.Starter}</td>
+          `;
+          lessonBody.appendChild(row);
+        }
+      });
+
+      const totalPages = Math.ceil(lessons.length / lessonsPerPage);
+      pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+      prevPage.disabled = currentPage === 1;
+      nextPage.disabled = currentPage === totalPages;
+    }
+
+    courseSelect.addEventListener('change', () => {
+      loadCSV(courseSelect.value);
+    });
+
+    prevPage.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        renderLessons();
+      }
+    });
+
+    nextPage.addEventListener('click', () => {
+      if (currentPage < Math.ceil(lessons.length / lessonsPerPage)) {
+        currentPage++;
+        renderLessons();
+      }
+    });
+
+    // Load the default CSV
+    loadCSV(courseSelect.value);
+  </script>
+</body>
+</html>
