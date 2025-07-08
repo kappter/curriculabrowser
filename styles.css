@@ -3,6 +3,51 @@ body {
   padding-bottom: 60px; /* Ensure content doesn't overlap footer */
 }
 
+/* Light mode styles */
+body {
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #1f2937;
+  color: #e5e7eb;
+}
+
+body.dark-mode .quadrant {
+  background-color: #374151;
+  color: #e5e7eb;
+}
+
+body.dark-mode .text-gray-800 {
+  color: #e5e7eb;
+}
+
+body.dark-mode .text-gray-700 {
+  color: #d1d5db;
+}
+
+body.dark-mode .text-gray-600 {
+  color: #9ca3af;
+}
+
+body.dark-mode .bg-white {
+  background-color: #374151;
+}
+
+body.dark-mode .bg-gray-200 {
+  background-color: #4b5563;
+}
+
+body.dark-mode .border-gray-300 {
+  border-color: #6b7280;
+}
+
+body.dark-mode .text-red-500 {
+  color: #f87171;
+}
+
 /* Ensure quadrants are touch-friendly and scrollable on mobile */
 .quadrant {
   min-height: 300px;
@@ -10,12 +55,12 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Adjust font sizes for mobile */
+/* Adjust font sizes and spacing for mobile */
 @media (max-width: 640px) {
   .quadrant {
     min-height: 250px;
   }
-  select, input[type="date"] {
+  select, input[type="date"], input[type="checkbox"] {
     font-size: 14px;
     padding: 8px;
   }
@@ -24,6 +69,10 @@ body {
   }
   p {
     font-size: 0.875rem;
+  }
+  button {
+    font-size: 0.875rem;
+    padding: 6px 10px;
   }
 }
 
@@ -43,11 +92,24 @@ select {
   background-position-y: 50%;
 }
 
-/* Ensure date picker is styled consistently */
-input[type="date"] {
+body.dark-mode select {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+}
+
+/* Ensure date picker and toggle are styled consistently */
+input[type="date"], input[type="checkbox"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   width: 100%;
   max-width: 200px;
+}
+
+/* Style navigation buttons */
+button {
+  min-width: 40px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
