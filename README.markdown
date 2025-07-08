@@ -1,110 +1,59 @@
-# Computer Programming Lesson Plans Web Repository
+# Block Schedule Lesson Plan Viewer
 
-## Overview
-
-This project is a web-based application designed to display lesson plans for Computer Programming 1 and Computer Programming 2, aligned with Utah’s curriculum standards. The application features a single-page interface with a dropdown menu to select a course (Programming 1 or Programming 2) and a paginated table displaying lesson details, including Day, Strand/Standard, Title, Concepts, and Starter activity. The interface is styled with Tailwind CSS for a clean, responsive design and uses Papa Parse to parse CSV files containing the lesson plans.
-
-The repository includes two CSV files:
-- `Master_ComputerProgramming1_LessonPlan.csv`: 40-day lesson plan for Computer Programming 1.
-- `Master_ComputerProgramming2_LessonPlan.csv`: 40-day lesson plan for Computer Programming 2.
-
-Each CSV file contains 40 lessons, covering a semester of approximately 43 days with 90-minute sessions, split into two 20-day terms. The web application allows educators and students to easily navigate and view lesson details.
+A web-based application for viewing lesson plans for Utah CTE computer science and robotics courses, designed for a four-class block schedule. Hosted at [https://kappter.github.io/curriculabrowser/](https://kappter.github.io/curriculabrowser/).
 
 ## Features
+- **Date Picker**: Select a date to view lesson plans for all four classes on that day, mapped to a 40-lesson semester (~43 block days, skipping weekends and holidays).
+- **Four Quadrants**: Each quadrant displays:
+  - A dropdown to select a course (e.g., Computer Programming 1, Advanced, Robotics 1).
+  - Lesson content (Day, Strand/Standard, Title, Concepts, Starter, Description).
+  - Pagination dropdown and `<`/`>` buttons for navigating lessons independently.
+- **Responsive Design**: Mobile-friendly (single-column layout <640px) and desktop-optimized (2x2 grid ≥640px).
+- **Dark Mode**: Toggle in the footer for light/dark themes, with readable text (darkened dropdowns in dark mode) and `localStorage` persistence.
+- **CSV Integration**: Loads lesson plans from CSV files hosted in the repository (e.g., `Master_ComputerProgrammingAdvanced_Semester1_LessonPlan.csv`).
+- **Utah CTE Alignment**: Supports standards for computer science (Java, C++, Python, C#) and Robotics 1 (VEX components), with 40 lessons per semester course.
 
-- **Dropdown Selection**: Choose between Computer Programming 1 or 2 lesson plans.
-- **Paginated Display**: View 10 lessons per page, with Previous/Next buttons for navigation.
-- **Responsive Design**: Clean, attractive table layout using Tailwind CSS, optimized for desktop and mobile.
-- **CSV Parsing**: Papa Parse library handles CSV file parsing for dynamic content loading.
-- **Error Handling**: Displays an error message if a CSV file fails to load.
+## Setup
+1. **Access via GitHub Pages**:
+   - Visit [https://kappter.github.io/curriculabrowser/](https://kappter.github.io/curriculabrowser/) to use the app directly.
+2. **Local Development**:
+   - Clone the repository: `git clone https://github.com/kappter/curriculabrowser.git`
+   - Serve the `index.html` file using a local server (e.g., `python -m http.server 8000` or VS Code Live Server).
+   - Ensure internet access for CDN dependencies (PapaParse, Tailwind CSS).
+3. **Dependencies**:
+   - [PapaParse](https://www.papaparse.com/) (v5.4.1, via CDN) for CSV parsing.
+   - [Tailwind CSS](https://tailwindcss.com/) (v2.2.19, via CDN) for styling.
+   - No build step required; all files (`index.html`, `styles.css`, `script.js`) are static.
+4. **Adding CSVs**:
+   - Place new CSV files in the repository root (e.g., `Master_NewCourse_LessonPlan.csv`).
+   - Update `index.html` course dropdowns with the new CSV URL (e.g., `https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_NewCourse_LessonPlan.csv`).
+   - Ensure CSVs have columns: `Day`, `Strand/Standard`, `Title`, `Concepts`, `Starter`, `Description`.
 
-## Repository Structure
+## Usage
+1. **Select a Date**:
+   - Use the date picker to choose a class day (default: today, e.g., July 8, 2025).
+   - The app maps the date to a lesson day (1–40) based on a semester start (September 1, 2025) and skips weekends/holidays (e.g., Thanksgiving, winter break).
+2. **Choose Courses**:
+   - Select a course in each quadrant’s dropdown (e.g., Computer Programming Advanced Semester 1).
+   - Each quadrant operates independently, allowing different courses or lessons.
+3. **Navigate Lessons**:
+   - Use the pagination dropdown or `<`/`>` buttons to view specific lessons (1–40).
+   - Date picker selection overrides pagination to show the corresponding lesson day across all quadrants.
+4. **Toggle Dark Mode**:
+   - Click the “Dark Mode” checkbox in the footer to switch themes.
+   - Theme preference persists across sessions via `localStorage`.
+5. **View Lesson Plans**:
+   - Each quadrant displays the lesson’s Day, Strand/Standard, Title, Concepts, Starter, and Description.
+   - Aligned with Utah CTE standards, supporting programming (Java, C++, Python, C#) and Robotics 1 (VEX components).
 
-```
-programming-courses/
-├── index.html
-├── Master_ComputerProgramming1_LessonPlan.csv
-├── Master_ComputerProgramming2_LessonPlan.csv
-└── README.md
-```
-
-- `index.html`: The main web application file, containing HTML, JavaScript, and Tailwind CSS for rendering the lesson plans.
-- `Master_ComputerProgramming1_LessonPlan.csv`: CSV file with 40 lessons for Computer Programming 1, including columns for Day, Strand/Standard, Title, Concepts, and Starter.
-- `Master_ComputerProgramming2_LessonPlan.csv`: CSV file with 40 lessons for Computer Programming 2, with the same column structure.
-- `README.md`: This file, providing project documentation.
-
-## Setup Instructions
-
-### Local Setup
-1. **Clone or Download the Repository**:
-   - Clone the repository using `git clone` or download the files as a ZIP and extract them.
-2. **Place CSV Files**:
-   - Ensure `Master_ComputerProgramming1_LessonPlan.csv` and `Master_ComputerProgramming2_LessonPlan.csv` are in the same directory as `index.html`.
-3. **Open the Application**:
-   - Open `index.html` in a modern web browser (e.g., Chrome, Firefox, Edge).
-   - Note: Some browsers may restrict local file access due to security policies. If the CSV files fail to load, use a local server (see below).
-
-### Hosted Setup
-1. **Host on a Server**:
-   - Upload the repository contents to a web server or a platform like GitHub Pages.
-   - Ensure the CSV files are accessible at the same directory level as `index.html`.
-2. **Verify File Access**:
-   - Confirm that the server allows access to the CSV files for Papa Parse to fetch them.
-3. **Access the Application**:
-   - Navigate to the hosted URL in a browser.
-
-### Local Server (Optional)
-To avoid local file access issues:
-1. Install a simple HTTP server, such as `http-server` for Node.js:
-   ```bash
-   npm install -g http-server
-   ```
-2. Navigate to the repository directory and run:
-   ```bash
-   http-server
-   ```
-3. Access the application at `http://localhost:8080`.
-
-## Usage Instructions
-
-1. **Open the Application**:
-   - Load `index.html` in a browser (locally or hosted).
-2. **Select a Course**:
-   - Use the dropdown menu to choose either "Computer Programming 1" or "Computer Programming 2".
-3. **View Lessons**:
-   - The table displays 10 lessons per page, with columns for Day, Strand/Standard, Title, Concepts, and Starter.
-4. **Navigate Pages**:
-   - Use the "Previous" and "Next" buttons to move between pages.
-   - The page indicator shows the current page and total pages (e.g., "Page 1 of 4").
-5. **Troubleshooting**:
-   - If the table shows an error (e.g., "Error loading lessons"), ensure the CSV files are in the correct directory and accessible.
-
-## Dependencies
-
-The application uses the following external libraries via CDNs:
-- **Tailwind CSS**: For styling the interface (loaded via `https://cdn.tailwindcss.com`).
-- **Papa Parse**: For parsing CSV files (loaded via `https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js`).
-
-No local installation of these libraries is required, but an internet connection is needed unless the libraries are downloaded and hosted locally.
-
-## Notes
-
-- **CSV File Requirements**:
-  - The CSV files must have the exact column headers: `Day`, `Strand/Standard`, `Title`, `Concepts`, and `Starter`.
-  - Ensure the files are in the same directory as `index.html` or accessible via the correct path if hosted.
-- **Browser Compatibility**:
-  - The application is compatible with modern browsers (Chrome, Firefox, Edge, Safari).
-  - Local file access may be restricted in some browsers due to CORS policies. Use a local server if issues arise.
-- **Customization**:
-  - To adjust pagination (e.g., lessons per page), modify the `lessonsPerPage` variable in the JavaScript code (default is 10).
-  - Additional features like search or filtering by strand can be added by extending the JavaScript logic.
-- **Standards Reference**:
-  - The lesson plans are aligned with Utah’s Computer Programming 1 and 2 standards, available at the [Utah Education Network]([invalid url, do not cite]).
+## Contributing
+- Fork the repository: `https://github.com/kappter/curriculabrowser`.
+- Add new features, CSVs, or bug fixes via pull requests.
+- Ensure CSVs follow the required format (see Setup).
+- Test changes locally and on GitHub Pages, checking console for errors (e.g., CSV parsing, file loading).
+- Contact the maintainer for curriculum-specific updates (e.g., new Utah CTE courses).
 
 ## License
+MIT License. See [LICENSE](LICENSE) for details.
 
-This project is intended for educational use and is not licensed for commercial distribution. Ensure compliance with Utah’s curriculum standards and any associated licensing for educational materials.
-
-## Contact
-
-For questions or suggestions, contact the repository maintainer or refer to the Utah Education Network for curriculum-related inquiries.
+© 2025 Kappter Education
