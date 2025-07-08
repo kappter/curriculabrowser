@@ -1,0 +1,53 @@
+/* Custom styles for responsive lesson plan interface */
+body {
+  padding-bottom: 60px; /* Ensure content doesn't overlap footer */
+}
+
+/* Ensure quadrants are touch-friendly and scrollable on mobile */
+.quadrant {
+  min-height: 300px;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+}
+
+/* Adjust font sizes for mobile */
+@media (max-width: 640px) {
+  .quadrant {
+    min-height: 250px;
+  }
+  select, input[type="date"] {
+    font-size: 14px;
+    padding: 8px;
+  }
+  h2 {
+    font-size: 1.25rem;
+  }
+  p {
+    font-size: 0.875rem;
+  }
+}
+
+/* Ensure footer stays fixed and doesn't obscure content */
+footer {
+  z-index: 10;
+}
+
+/* Improve touch interaction for dropdowns */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 98%;
+  background-position-y: 50%;
+}
+
+/* Ensure date picker is styled consistently */
+input[type="date"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  max-width: 200px;
+}
