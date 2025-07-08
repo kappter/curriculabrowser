@@ -42,17 +42,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Computer Programming Lesson Plans</title>
+  <title>Lesson Plans - Block Schedule</title>
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-gray-100 font-sans min-h-screen flex flex-col">
   <div class="container mx-auto p-4 flex-grow">
-    <h1 class="text-3xl font-bold text-center mb-6 text-gray-800">Lesson Plans</h1>
+    <h1 class="text-2xl sm:text-3xl font-bold text-center mb-4 text-gray-800">Lesson Plans - Block Schedule</h1>
     <div class="mb-6 flex justify-center">
       <div class="w-full max-w-xs">
-        <label for="courseSelect" class="block text-lg font-medium text-gray-700 mb-2">Select Course:</label>
-        <select id="courseSelect" class="block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+        <label for="datePicker" class="block text-lg font-medium text-gray-700 mb-2">Select Date:</label>
+        <input type="date" id="datePicker" class="block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+      </div>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div class="quadrant bg-white shadow-lg rounded-lg p-4">
+        <label for="courseSelect1" class="block text-base sm:text-lg font-medium text-gray-700 mb-2">Class 1:</label>
+        <select id="courseSelect1" class="block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 mb-4">
           <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_ComputerProgramming1_LessonPlan.csv">Computer Programming 1</option>
           <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_ComputerProgramming2_LessonPlan.csv">Computer Programming 2</option>
           <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_GameDevelopmentFundamentals1_LessonPlan.csv">Game Development Fundamentals 1</option>
@@ -62,127 +69,71 @@
           <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_ComputerProgrammingAdvanced_Semester2_LessonPlan.csv">Computer Programming Advanced (Semester 2)</option>
           <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_Robotics1_LessonPlan.csv">Robotics 1</option>
         </select>
+        <div id="lessonCard1" class="text-sm sm:text-base"></div>
+        <div class="flex justify-center mt-4">
+          <select id="pageSelect1" class="p-2 border border-gray-300 rounded-md"></select>
+        </div>
+      </div>
+      <div class="quadrant bg-white shadow-lg rounded-lg p-4">
+        <label for="courseSelect2" class="block text-base sm:text-lg font-medium text-gray-700 mb-2">Class 2:</label>
+        <select id="courseSelect2" class="block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 mb-4">
+          <!-- Same options as courseSelect1 -->
+          <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_ComputerProgramming1_LessonPlan.csv">Computer Programming 1</option>
+          <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_ComputerProgramming2_LessonPlan.csv">Computer Programming 2</option>
+          <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_GameDevelopmentFundamentals1_LessonPlan.csv">Game Development Fundamentals 1</option>
+          <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_GameDevelopmentFundamentals2_LessonPlan.csv">Game Development Fundamentals 2</option>
+          <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_ExploringComputerScience_LessonPlan.csv">Exploring Computer Science</option>
+          <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_ComputerProgrammingAdvanced_Semester1_LessonPlan.csv">Computer Programming Advanced (Semester 1)</option>
+          <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_ComputerProgrammingAdvanced_Semester2_LessonPlan.csv">Computer Programming Advanced (Semester 2)</option>
+          <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_Robotics1_LessonPlan.csv">Robotics 1</option>
+        </select>
+        <div id="lessonCard2" class="text-sm sm:text-base"></div>
+        <div class="flex justify-center mt-4">
+          <select id="pageSelect2" class="p-2 border border-gray-300 rounded-md"></select>
+        </div>
+      </div>
+      <div class="quadrant bg-white shadow-lg rounded-lg p-4">
+        <label for="courseSelect3" class="block text-base sm:text-lg font-medium text-gray-700 mb-2">Class 3:</label>
+        <select id="courseSelect3" class="block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 mb-4">
+          <!-- Same options as courseSelect1 -->
+          <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_ComputerProgramming1_LessonPlan.csv">Computer Programming 1</option>
+          <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_ComputerProgramming2_LessonPlan.csv">Computer Programming 2</option>
+          <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_GameDevelopmentFundamentals1_LessonPlan.csv">Game Development Fundamentals 1</option>
+          <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_GameDevelopmentFundamentals2_LessonPlan.csv">Game Development Fundamentals 2</option>
+          <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_ExploringComputerScience_LessonPlan.csv">Exploring Computer Science</option>
+          <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_ComputerProgrammingAdvanced_Semester1_LessonPlan.csv">Computer Programming Advanced (Semester 1)</option>
+          <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_ComputerProgrammingAdvanced_Semester2_LessonPlan.csv">Computer Programming Advanced (Semester 2)</option>
+          <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_Robotics1_LessonPlan.csv">Robotics 1</option>
+        </select>
+        <div id="lessonCard3" class="text-sm sm:text-base"></div>
+        <div class="flex justify-center mt-4">
+          <select id="pageSelect3" class="p-2 border border-gray-300 rounded-md"></select>
+        </div>
+      </div>
+      <div class="quadrant bg-white shadow-lg rounded-lg p-4">
+        <label for="courseSelect4" class="block text-base sm:text-lg font-medium text-gray-700 mb-2">Class 4:</label>
+        <select id="courseSelect4" class="block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 mb-4">
+          <!-- Same options as courseSelect1 -->
+          <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_ComputerProgramming1_LessonPlan.csv">Computer Programming 1</option>
+          <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_ComputerProgramming2_LessonPlan.csv">Computer Programming 2</option>
+          <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_GameDevelopmentFundamentals1_LessonPlan.csv">Game Development Fundamentals 1</option>
+          <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_GameDevelopmentFundamentals2_LessonPlan.csv">Game Development Fundamentals 2</option>
+          <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_ExploringComputerScience_LessonPlan.csv">Exploring Computer Science</option>
+          <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_ComputerProgrammingAdvanced_Semester1_LessonPlan.csv">Computer Programming Advanced (Semester 1)</option>
+          <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_ComputerProgrammingAdvanced_Semester2_LessonPlan.csv">Computer Programming Advanced (Semester 2)</option>
+          <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_Robotics1_LessonPlan.csv">Robotics 1</option>
+        </select>
+        <div id="lessonCard4" class="text-sm sm:text-base"></div>
+        <div class="flex justify-center mt-4">
+          <select id="pageSelect4" class="p-2 border border-gray-300 rounded-md"></select>
+        </div>
       </div>
     </div>
-    <div id="lessonCard" class="bg-white shadow-lg rounded-lg p-6 max-w-2xl mx-auto"></div>
     <div id="errorMessage" class="hidden text-center text-red-500 mt-4"></div>
   </div>
-  <div class="bg-gray-200 py-4">
-    <div class="container mx-auto flex justify-center items-center">
-      <button id="prevPage" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:bg-gray-400 disabled:cursor-not-allowed">Previous</button>
-      <select id="pageSelect" class="mx-4 p-2 border border-gray-300 rounded-md"></select>
-      <button id="nextPage" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:bg-gray-400 disabled:cursor-not-allowed">Next</button>
-    </div>
-  </div>
-
-  <script>
-    const courseSelect = document.getElementById('courseSelect');
-    const lessonCard = document.getElementById('lessonCard');
-    const prevPage = document.getElementById('prevPage');
-    const nextPage = document.getElementById('nextPage');
-    const pageSelect = document.getElementById('pageSelect');
-    const errorMessage = document.getElementById('errorMessage');
-
-    let lessons = [];
-    let currentPage = 1;
-
-    function loadCSV(file) {
-      errorMessage.classList.add('hidden');
-      lessonCard.innerHTML = '<p class="text-center text-gray-500">Loading...</p>';
-      console.log(`Starting to load CSV: ${file}`);
-      Papa.parse(file, {
-        download: true,
-        header: true,
-        complete: function(results) {
-          console.log(`CSV parsing complete. Total rows received: ${results.data.length}`);
-          lessons = results.data.filter((lesson, index) => {
-            const isValid = lesson.Day && lesson['Strand/Standard'] && lesson.Title && lesson.Concepts && lesson.Starter && lesson.Description;
-            console.log(`Row ${index + 1}: ${isValid ? 'Valid' : 'Invalid'}, Data: ${JSON.stringify(lesson)}`);
-            return isValid;
-          });
-          console.log(`Filtered valid lessons: ${lessons.length}`);
-          if (lessons.length === 0) {
-            showError('No valid lessons found in the CSV file.');
-            return;
-          }
-          currentPage = 1;
-          populatePageSelect();
-          renderLesson();
-        },
-        error: function(error) {
-          console.error(`Error loading CSV: ${error.message}`);
-          showError('Error loading CSV file. Please check the file path or server configuration.');
-        }
-      });
-    }
-
-    function showError(message) {
-      lessonCard.innerHTML = '';
-      errorMessage.textContent = message;
-      errorMessage.classList.remove('hidden');
-      pageSelect.innerHTML = '';
-      prevPage.disabled = true;
-      nextPage.disabled = true;
-    }
-
-    function populatePageSelect() {
-      pageSelect.innerHTML = '';
-      lessons.forEach((_, index) => {
-        const option = document.createElement('option');
-        option.value = index + 1;
-        option.textContent = `Lesson ${index + 1}`;
-        pageSelect.appendChild(option);
-      });
-      pageSelect.value = currentPage;
-    }
-
-    function renderLesson() {
-      const lesson = lessons[currentPage - 1];
-      if (!lesson) {
-        showError('No lesson found for this page.');
-        return;
-      }
-
-      lessonCard.innerHTML = `
-        <div class="border-l-4 border-blue-500 pl-4">
-          <h2 class="text-xl font-semibold text-gray-800 mb-2">Day ${lesson.Day}: ${lesson.Title}</h2>
-          <p class="text-gray-600"><strong>Strand/Standard:</strong> ${lesson['Strand/Standard']}</p>
-          <p class="text-gray-600 mt-2"><strong>Concepts:</strong> ${lesson.Concepts}</p>
-          <p class="text-gray-600 mt-2"><strong>Starter:</strong> ${lesson.Starter}</p>
-          <p class="text-gray-600 mt-2"><strong>Description:</strong> ${lesson.Description}</p>
-        </div>
-      `;
-
-      prevPage.disabled = currentPage === 1;
-      nextPage.disabled = currentPage === lessons.length;
-      pageSelect.value = currentPage;
-    }
-
-    courseSelect.addEventListener('change', () => {
-      loadCSV(courseSelect.value);
-    });
-
-    prevPage.addEventListener('click', () => {
-      if (currentPage > 1) {
-        currentPage--;
-        renderLesson();
-      }
-    });
-
-    nextPage.addEventListener('click', () => {
-      if (currentPage < lessons.length) {
-        currentPage++;
-        renderLesson();
-      }
-    });
-
-    pageSelect.addEventListener('change', () => {
-      currentPage = parseInt(pageSelect.value);
-      renderLesson();
-    });
-
-    // Load the default CSV
-    loadCSV(courseSelect.value);
-  </script>
+  <footer class="bg-gray-200 py-2 text-center text-xs text-gray-600 fixed bottom-0 w-full">
+    &copy; 2025 Kappter Education
+  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
