@@ -29,7 +29,7 @@ body.dark-mode .text-gray-700 {
 }
 
 body.dark-mode .text-gray-600 {
-  color: #9ca3af;
+  color: #1f2937; /* Darker text for better contrast in dark mode */
 }
 
 body.dark-mode .bg-white {
@@ -46,6 +46,12 @@ body.dark-mode .border-gray-300 {
 
 body.dark-mode .text-red-500 {
   color: #f87171;
+}
+
+body.dark-mode select {
+  background-color: #374151;
+  color: #e5e7eb;
+  border-color: #6b7280;
 }
 
 /* Ensure quadrants are touch-friendly and scrollable on mobile */
@@ -73,6 +79,13 @@ body.dark-mode .text-red-500 {
   button {
     font-size: 0.875rem;
     padding: 6px 10px;
+  }
+  footer label span {
+    font-size: 0.75rem;
+  }
+  footer input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
   }
 }
 
@@ -105,8 +118,8 @@ input[type="date"], input[type="checkbox"] {
   max-width: 200px;
 }
 
-/* Style navigation buttons */
-button {
+/* Style navigation buttons and footer toggle */
+button, input[type="checkbox"] {
   min-width: 40px;
   min-height: 40px;
   display: flex;
