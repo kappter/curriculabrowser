@@ -1,3 +1,4 @@
+```javascript
 const datePicker = document.getElementById('datePicker');
 const darkModeToggle = document.getElementById('darkModeToggle');
 const errorMessage = document.getElementById('errorMessage');
@@ -142,6 +143,7 @@ function renderLesson(quadrant) {
 function openCarousel(quadrant, startPage) {
   carouselTitle.textContent = `Lessons for ${quadrant.courseSelect.options[quadrant.courseSelect.selectedIndex].text}`;
   carouselContent.innerHTML = '';
+  carouselContent.dataset.quadrant = quadrant.courseSelect.id; // Set quadrant ID
   quadrant.currentCarouselPage = startPage - 1;
   renderCarouselLesson(quadrant);
   carouselModal.classList.remove('hidden');
@@ -176,6 +178,7 @@ function openStandardCarousel(quadrant, standard) {
   quadrant.currentStandardLessons = filteredLessons;
   quadrant.currentStandardPage = 0;
   standardTitle.textContent = `Lessons for ${standard}`;
+  standardContent.dataset.quadrant = quadrant.courseSelect.id; // Set quadrant ID
   renderStandardLesson(quadrant);
   standardModal.classList.remove('hidden');
 }
@@ -238,7 +241,7 @@ quadrants.forEach(quadrant => {
 // Carousel navigation
 carouselPrev.addEventListener('click', () => {
   const quadrant = quadrants.find(q => q.courseSelect.id === carouselContent.dataset.quadrant);
-  if (quadrant.currentCarouselPage > 0) {
+  if (quadrant && quadrant.currentCarouselPage > 0) {
     quadrant.currentCarouselPage--;
     renderCarouselLesson(quadrant);
   }
@@ -246,7 +249,7 @@ carouselPrev.addEventListener('click', () => {
 
 carouselNext.addEventListener('click', () => {
   const quadrant = quadrants.find(q => q.courseSelect.id === carouselContent.dataset.quadrant);
-  if (quadrant.currentCarouselPage < quadrant.lessons.length - 1) {
+  if (quadrant && quadrant.currentCarouselPage < quadrant.lessons.length - 1) {
     quadrant.currentCarouselPage++;
     renderCarouselLesson(quadrant);
   }
@@ -259,7 +262,7 @@ closeCarousel.addEventListener('click', () => {
 // Standard carousel navigation
 standardPrev.addEventListener('click', () => {
   const quadrant = quadrants.find(q => q.courseSelect.id === standardContent.dataset.quadrant);
-  if (quadrant.currentStandardPage > 0) {
+  if (quadrant && quadrant.currentStandardPage > 0) {
     quadrant.currentStandardPage--;
     renderStandardLesson(quadrant);
   }
@@ -267,7 +270,7 @@ standardPrev.addEventListener('click', () => {
 
 standardNext.addEventListener('click', () => {
   const quadrant = quadrants.find(q => q.courseSelect.id === standardContent.dataset.quadrant);
-  if (quadrant.currentStandardPage < quadrant.currentStandardLessons.length - 1) {
+  if (quadrant && quadrant.currentStandardPage < quadrant.currentStandardLessons.length - 1) {
     quadrant.currentStandardPage++;
     renderStandardLesson(quadrant);
   }
@@ -283,3 +286,4 @@ datePicker.addEventListener('change', updateAllQuadrantsByDate);
 // Set default date to today
 datePicker.value = new Date().toISOString().split('T')[0];
 updateAllQuadrantsByDate();
+```
