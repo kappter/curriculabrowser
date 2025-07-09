@@ -4,7 +4,7 @@ function loadCSV(quadrant, file) {
     return;
   }
   quadrant.lessonCard.innerHTML = '<p class="text-center text-gray-500">Loading...</p>';
-  console.log(`Attempting to load CSV for quadrant: ${file}`);
+  console.log(`Attempting to load CSV for quadrant: ${quadrant.courseSelect.id} from ${file}`);
   Papa.parse(file, {
     download: true,
     header: true,
@@ -15,7 +15,7 @@ function loadCSV(quadrant, file) {
         console.log(`Row ${index + 1}: ${isValid ? 'Valid' : 'Invalid'}, Data: ${JSON.stringify(lesson)}`);
         return isValid;
       });
-      console.log(`Filtered valid lessons: ${quadrant.lessons.length}`);
+      console.log(`Filtered valid lessons for ${quadrant.courseSelect.id}: ${quadrant.lessons.length}`);
       if (quadrant.lessons.length === 0) {
         showError(quadrant, 'No valid lessons found in the CSV file.');
         return;
@@ -24,7 +24,7 @@ function loadCSV(quadrant, file) {
       renderLesson(quadrant);
     },
     error: function(error) {
-      console.error(`Error loading CSV for ${file}: ${error.message}`);
+      console.error(`Error loading CSV for ${quadrant.courseSelect.id} from ${file}: ${error.message}`);
       showError(quadrant, 'Error loading CSV file. Please check the file path or server configuration.');
     }
   });
@@ -112,13 +112,13 @@ function renderCarouselLesson(quadrant) {
 
 function openStandardCarousel(quadrant, standard) {
   const normalizedStandard = standard.trim();
-  console.log(`Filtering lessons for standard: "${normalizedStandard}"`);
+  console.log(`Filtering lessons for standard: "${normalizedStandard}" in quadrant: ${quadrant.courseSelect.id}`);
   const filteredLessons = quadrant.lessons.filter(lesson => {
     const lessonStandard = lesson['Strand/Standard'].trim();
     console.log(`Comparing lesson standard: "${lessonStandard}" with "${normalizedStandard}"`);
     return lessonStandard === normalizedStandard;
   });
-  console.log(`Found ${filteredLessons.length} lessons for standard: "${normalizedStandard}"`);
+  console.log(`Found ${filteredLessons.length} lessons for standard: "${normalizedStandard}" in quadrant: ${quadrant.courseSelect.id}`);
 
   if (filteredLessons.length === 0) {
     errorMessage.textContent = `No lessons found for standard: ${normalizedStandard}`;
@@ -186,11 +186,10 @@ function updateAllQuadrantsByDate() {
         quadrant.lessonCard.innerHTML += '<p class="text-yellow-600 dark:text-yellow-300 mt-2">Note: This date exceeds the 40-lesson plan. Displaying Lesson 40.</p>';
       }
     }
-    // Only set course and reload if not already set to default on August 13
+    // Only set course on August 13 if not already the default, but avoid reloading if already loaded
     if (selectedDate.toISOString().split('T')[0] === '2025-08-13' && quadrant.courseSelect.value !== quadrant.defaultCourse) {
-      console.log(`Setting course to ${quadrant.defaultCourse} for quadrant ${quadrant.courseSelect.id}`);
+      console.log(`Setting course to ${quadrant.defaultCourse} for quadrant ${quadrant.courseSelect.id} on August 13`);
       quadrant.courseSelect.value = quadrant.defaultCourse;
-      loadCSV(quadrant, quadrant.defaultCourse);
     }
   });
 }
