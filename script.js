@@ -21,7 +21,7 @@ const quadrants = [
   { courseSelect: document.getElementById('courseSelect4'), lessonCard: document.getElementById('lessonCard4'), pageSelect: document.getElementById('pageSelect4'), prevPage: document.getElementById('prevPage4'), nextPage: document.getElementById('nextPage4'), lessons: [], currentPage: 1 }
 ];
 
-// Semester start date and holidays (configurable)
+// Semester start date and holidays
 const SEMESTER_START = new Date('2025-09-01');
 const HOLIDAYS = [
   '2025-11-27', // Thanksgiving
@@ -32,19 +32,17 @@ const HOLIDAYS = [
   '2026-01-01'
 ];
 
-// Initialize dark mode from localStorage
+// Initialize dark mode
 if (localStorage.getItem('darkMode') === 'enabled') {
   document.body.classList.add('dark-mode');
   darkModeToggle.checked = true;
 }
 
-// Dark mode toggle event
 darkModeToggle.addEventListener('change', () => {
   document.body.classList.toggle('dark-mode');
   localStorage.setItem('darkMode', document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
 });
 
-// Calculate lesson day from selected date (1–40)
 function getLessonDay(selectedDate) {
   const start = new Date(SEMESTER_START);
   let days = 0;
@@ -59,7 +57,7 @@ function getLessonDay(selectedDate) {
     current.setDate(current.getDate() + 1);
   }
 
-  return Math.min(Math.max(1, days), 40);
+  return Math.min(Math.max(1, days), 40); // Cap at 40
 }
 
 function loadCSV(quadrant, file) {
@@ -134,15 +132,19 @@ function renderLesson(quadrant) {
     openCarousel(quadrant, quadrant.currentPage);
   });
 
-  quadrant.lessonCard.querySelector('.standard-link').addEventListener('click', () => {
-    openStandardCarousel(quadrant, lesson['Strand/Standard']);
-  });
+  const standardLink = quadrant.lessonCard.querySelector('.standard-link');
+  if (standardLink) {
+    standardLink.addEventListener('click', () => {
+      console.log(`Opening standard carousel for quadrant: ${quadrant.courseSelect.id}, standard: ${standardLink.dataset.standard}`);
+      openStandardCarousel(quadrant, standardLink.dataset.standard);
+    });
+  }
 }
 
 function openCarousel(quadrant, startPage) {
   carouselTitle.textContent = `Lessons for ${quadrant.courseSelect.options[quadrant.courseSelect.selectedIndex].text}`;
   carouselContent.innerHTML = '';
-  carouselContent.dataset.quadrant = quadrant.courseSelect.id; // Set quadrant ID
+  carouselContent.dataset.quadrant = quadrant.courseSelect.id;
   quadrant.currentCarouselPage = startPage - 1;
   renderCarouselLesson(quadrant);
   carouselModal.classList.remove('hidden');
@@ -167,24 +169,36 @@ function renderCarouselLesson(quadrant) {
 }
 
 function openStandardCarousel(quadrant, standard) {
-  const filteredLessons = quadrant.lessons.filter(lesson => lesson['Strand/Standard'] === standard);
+  const normalizedStandard = standard.trim();
+  console.log(`Filtering lessons for standard: "${normalizedStandard}"`);
+  const filteredLessons = quadrant.lessons.filter(lesson => {
+    const lessonStandard = lesson['Strand/Standard'].trim();
+    console.log(`Comparing lesson standard: "${lessonStandard}" with "${normalizedStandard}"`);
+    return lessonStandard === normalizedStandard;
+  });
+  console.log(`Found ${filteredLessons.length} lessons for standard: "${normalizedStandard}"`);
+
   if (filteredLessons.length === 0) {
-    errorMessage.textContent = 'No lessons found for this strand/standard.';
+    errorMessage.textContent = `No lessons found for standard: ${normalizedStandard}`;
     errorMessage.classList.remove('hidden');
     return;
   }
 
   quadrant.currentStandardLessons = filteredLessons;
   quadrant.currentStandardPage = 0;
-  standardTitle.textContent = `Lessons for ${standard}`;
-  standardContent.dataset.quadrant = quadrant.courseSelect.id; // Set quadrant ID
+  standardTitle.textContent = `Lessons for ${normalizedStandard}`;
+  standardContent.dataset.quadrant = quadrant.courseSelect.id;
   renderStandardLesson(quadrant);
   standardModal.classList.remove('hidden');
+  standardModal.style.display = 'block';
 }
 
 function renderStandardLesson(quadrant) {
   const lesson = quadrant.currentStandardLessons[quadrant.currentStandardPage];
-  if (!lesson) return;
+  if (!lesson) {
+    standardContent.innerHTML = '<p class="text-center text-gray-500">No lesson available.</p>';
+    return;
+  }
 
   standardContent.innerHTML = `
     <div class="border-l-4 border-blue-500 pl-4">
@@ -209,6 +223,10 @@ function updateAllQuadrantsByDate() {
     if (quadrant.lessons.length > 0) {
       populatePageSelect(quadrant);
       renderLesson(quadrant);
+      // Display a message for days beyond 40
+      if (lessonDay === 40 && selectedDate > new Date(SEMESTER_START)) {
+        quadrant.lessonCard.innerHTML += '<p class="text-yellow-600 dark:text-yellow-300 mt-2">Note: This date exceeds the 40-lesson plan. Displaying Lesson 40.</p>';
+      }
     }
   });
 }
@@ -277,6 +295,7 @@ standardNext.addEventListener('click', () => {
 
 closeStandard.addEventListener('click', () => {
   standardModal.classList.add('hidden');
+  standardModal.style.display = 'none';
 });
 
 // Date picker event
