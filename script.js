@@ -1,4 +1,3 @@
-```javascript
 const datePicker = document.getElementById('datePicker');
 const darkModeToggle = document.getElementById('darkModeToggle');
 const errorMessage = document.getElementById('errorMessage');
@@ -120,11 +119,11 @@ function renderLesson(quadrant) {
 
   quadrant.lessonCard.innerHTML = `
     <div class="border-l-4 border-blue-500 pl-4">
-      <h2 class="day-title text-lg sm:text-xl font-semibold text-gray-800 mb-2" data-quadrant="${quadrant.courseSelect.id}">${lesson.Day}: ${lesson.Title}</h2>
-      <p class="text-gray-600"><strong>Strand/Standard:</strong> <span class="standard-link" data-quadrant="${quadrant.courseSelect.id}" data-standard="${lesson['Strand/Standard']}">${lesson['Strand/Standard']}</span></p>
-      <p class="text-gray-600 mt-2"><strong>Concepts:</strong> ${lesson.Concepts}</p>
-      <p class="text-gray-600 mt-2"><strong>Starter:</strong> ${lesson.Starter}</p>
-      <p class="text-gray-600 mt-2"><strong>Description:</strong> ${lesson.Description}</p>
+      <h2 class="day-title text-lg sm:text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2" data-quadrant="${quadrant.courseSelect.id}">${lesson.Day}: ${lesson.Title}</h2>
+      <p class="text-gray-600 dark:text-gray-100"><strong>Strand/Standard:</strong> <span class="standard-link" data-quadrant="${quadrant.courseSelect.id}" data-standard="${lesson['Strand/Standard']}">${lesson['Strand/Standard']}</span></p>
+      <p class="text-gray-600 dark:text-gray-100 mt-2"><strong>Concepts:</strong> ${lesson.Concepts}</p>
+      <p class="text-gray-600 dark:text-gray-100 mt-2"><strong>Starter:</strong> ${lesson.Starter}</p>
+      <p class="text-gray-600 dark:text-gray-100 text-base sm:text-lg mt-2"><strong>Description:</strong> ${lesson.Description}</p>
     </div>
   `;
 
@@ -155,11 +154,11 @@ function renderCarouselLesson(quadrant) {
 
   carouselContent.innerHTML = `
     <div class="border-l-4 border-blue-500 pl-4">
-      <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">${lesson.Day}: ${lesson.Title}</h2>
-      <p class="text-gray-600 dark:text-gray-200 mt-2"><strong>Strand/Standard:</strong> ${lesson['Strand/Standard']}</p>
-      <p class="text-gray-600 dark:text-gray-200 mt-2"><strong>Concepts:</strong> ${lesson.Concepts}</p>
-      <p class="text-gray-600 dark:text-gray-200 mt-2"><strong>Starter:</strong> ${lesson.Starter}</p>
-      <p class="text-gray-600 dark:text-gray-200 mt-2"><strong>Description:</strong> ${lesson.Description}</p>
+      <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-100">${lesson.Day}: ${lesson.Title}</h2>
+      <p class="text-gray-600 dark:text-gray-100 mt-2"><strong>Strand/Standard:</strong> ${lesson['Strand/Standard']}</p>
+      <p class="text-gray-600 dark:text-gray-100 mt-2"><strong>Concepts:</strong> ${lesson.Concepts}</p>
+      <p class="text-gray-600 dark:text-gray-100 mt-2"><strong>Starter:</strong> ${lesson.Starter}</p>
+      <p class="text-gray-600 dark:text-gray-100 text-base sm:text-lg mt-2"><strong>Description:</strong> ${lesson.Description}</p>
     </div>
   `;
 
@@ -189,11 +188,11 @@ function renderStandardLesson(quadrant) {
 
   standardContent.innerHTML = `
     <div class="border-l-4 border-blue-500 pl-4">
-      <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">${lesson.Day}: ${lesson.Title}</h2>
-      <p class="text-gray-600 dark:text-gray-200 mt-2"><strong>Strand/Standard:</strong> ${lesson['Strand/Standard']}</p>
-      <p class="text-gray-600 dark:text-gray-200 mt-2"><strong>Concepts:</strong> ${lesson.Concepts}</p>
-      <p class="text-gray-600 dark:text-gray-200 mt-2"><strong>Starter:</strong> ${lesson.Starter}</p>
-      <p class="text-gray-600 dark:text-gray-200 mt-2"><strong>Description:</strong> ${lesson.Description}</p>
+      <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-100">${lesson.Day}: ${lesson.Title}</h2>
+      <p class="text-gray-600 dark:text-gray-100 mt-2"><strong>Strand/Standard:</strong> ${lesson['Strand/Standard']}</p>
+      <p class="text-gray-600 dark:text-gray-100 mt-2"><strong>Concepts:</strong> ${lesson.Concepts}</p>
+      <p class="text-gray-600 dark:text-gray-100 mt-2"><strong>Starter:</strong> ${lesson.Starter}</p>
+      <p class="text-gray-600 dark:text-gray-100 text-base sm:text-lg mt-2"><strong>Description:</strong> ${lesson.Description}</p>
     </div>
   `;
 
@@ -286,4 +285,3 @@ datePicker.addEventListener('change', updateAllQuadrantsByDate);
 // Set default date to today
 datePicker.value = new Date().toISOString().split('T')[0];
 updateAllQuadrantsByDate();
-```
