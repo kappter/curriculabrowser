@@ -1,7 +1,10 @@
 function loadCSV(quadrant, file) {
-  if (quadrant.lessons.length > 0) return; // Skip if already loaded
+  if (quadrant.lessons.length > 0) {
+    console.log(`Skipping load for ${file} as lessons are already loaded.`);
+    return;
+  }
   quadrant.lessonCard.innerHTML = '<p class="text-center text-gray-500">Loading...</p>';
-  console.log(`Starting to load CSV for quadrant: ${file}`);
+  console.log(`Attempting to load CSV for quadrant: ${file}`);
   Papa.parse(file, {
     download: true,
     header: true,
@@ -21,7 +24,7 @@ function loadCSV(quadrant, file) {
       renderLesson(quadrant);
     },
     error: function(error) {
-      console.error(`Error loading CSV: ${error.message}`);
+      console.error(`Error loading CSV for ${file}: ${error.message}`);
       showError(quadrant, 'Error loading CSV file. Please check the file path or server configuration.');
     }
   });
@@ -183,7 +186,9 @@ function updateAllQuadrantsByDate() {
         quadrant.lessonCard.innerHTML += '<p class="text-yellow-600 dark:text-yellow-300 mt-2">Note: This date exceeds the 40-lesson plan. Displaying Lesson 40.</p>';
       }
     }
+    // Only set course and reload if not already set to default on August 13
     if (selectedDate.toISOString().split('T')[0] === '2025-08-13' && quadrant.courseSelect.value !== quadrant.defaultCourse) {
+      console.log(`Setting course to ${quadrant.defaultCourse} for quadrant ${quadrant.courseSelect.id}`);
       quadrant.courseSelect.value = quadrant.defaultCourse;
       loadCSV(quadrant, quadrant.defaultCourse);
     }
