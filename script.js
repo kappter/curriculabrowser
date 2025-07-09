@@ -1,6 +1,19 @@
 const datePicker = document.getElementById('datePicker');
 const darkModeToggle = document.getElementById('darkModeToggle');
 const errorMessage = document.getElementById('errorMessage');
+const carouselModal = document.getElementById('carouselModal');
+const carouselTitle = document.getElementById('carouselTitle');
+const carouselContent = document.getElementById('carouselContent');
+const carouselPrev = document.getElementById('carouselPrev');
+const carouselNext = document.getElementById('carouselNext');
+const closeCarousel = document.getElementById('closeCarousel');
+const standardModal = document.getElementById('standardModal');
+const standardTitle = document.getElementById('standardTitle');
+const standardContent = document.getElementById('standardContent');
+const standardPrev = document.getElementById('standardPrev');
+const standardNext = document.getElementById('standardNext');
+const closeStandard = document.getElementById('closeStandard');
+
 const quadrants = [
   { courseSelect: document.getElementById('courseSelect1'), lessonCard: document.getElementById('lessonCard1'), pageSelect: document.getElementById('pageSelect1'), prevPage: document.getElementById('prevPage1'), nextPage: document.getElementById('nextPage1'), lessons: [], currentPage: 1 },
   { courseSelect: document.getElementById('courseSelect2'), lessonCard: document.getElementById('lessonCard2'), pageSelect: document.getElementById('pageSelect2'), prevPage: document.getElementById('prevPage2'), nextPage: document.getElementById('nextPage2'), lessons: [], currentPage: 1 },
@@ -13,7 +26,7 @@ const SEMESTER_START = new Date('2025-09-01');
 const HOLIDAYS = [
   '2025-11-27', // Thanksgiving
   '2025-11-28', // Day after Thanksgiving
-  '2025-12-24', // Winter break (simplified)
+  '2025-12-24', // Winter break
   '2025-12-25',
   '2025-12-31',
   '2026-01-01'
@@ -46,7 +59,6 @@ function getLessonDay(selectedDate) {
     current.setDate(current.getDate() + 1);
   }
 
-  // Cap at 40 lessons per semester
   return Math.min(Math.max(1, days), 40);
 }
 
@@ -107,8 +119,8 @@ function renderLesson(quadrant) {
 
   quadrant.lessonCard.innerHTML = `
     <div class="border-l-4 border-blue-500 pl-4">
-      <h2 class="text-lg sm:text-xl font-semibold text-gray-800 mb-2">Day ${lesson.Day}: ${lesson.Title}</h2>
-      <p class="text-gray-600"><strong>Strand/Standard:</strong> ${lesson['Strand/Standard']}</p>
+      <h2 class="day-title text-lg sm:text-xl font-semibold text-gray-800 mb-2" data-quadrant="${quadrant.courseSelect.id}">${lesson.Day}: ${lesson.Title}</h2>
+      <p class="text-gray-600"><strong>Strand/Standard:</strong> <span class="standard-link" data-quadrant="${quadrant.courseSelect.id}" data-standard="${lesson['Strand/Standard']}">${lesson['Strand/Standard']}</span></p>
       <p class="text-gray-600 mt-2"><strong>Concepts:</strong> ${lesson.Concepts}</p>
       <p class="text-gray-600 mt-2"><strong>Starter:</strong> ${lesson.Starter}</p>
       <p class="text-gray-600 mt-2"><strong>Description:</strong> ${lesson.Description}</p>
@@ -117,7 +129,73 @@ function renderLesson(quadrant) {
 
   quadrant.prevPage.disabled = quadrant.currentPage === 1;
   quadrant.nextPage.disabled = quadrant.currentPage === quadrant.lessons.length;
-  quadrant.pageSelect.value = quadrant.currentPage;
+
+  quadrant.lessonCard.querySelector('.day-title').addEventListener('click', () => {
+    openCarousel(quadrant, quadrant.currentPage);
+  });
+
+  quadrant.lessonCard.querySelector('.standard-link').addEventListener('click', () => {
+    openStandardCarousel(quadrant, lesson['Strand/Standard']);
+  });
+}
+
+function openCarousel(quadrant, startPage) {
+  carouselTitle.textContent = `Lessons for ${quadrant.courseSelect.options[quadrant.courseSelect.selectedIndex].text}`;
+  carouselContent.innerHTML = '';
+  quadrant.currentCarouselPage = startPage - 1;
+  renderCarouselLesson(quadrant);
+  carouselModal.classList.remove('hidden');
+}
+
+function renderCarouselLesson(quadrant) {
+  const lesson = quadrant.lessons[quadrant.currentCarouselPage];
+  if (!lesson) return;
+
+  carouselContent.innerHTML = `
+    <div class="border-l-4 border-blue-500 pl-4">
+      <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">${lesson.Day}: ${lesson.Title}</h2>
+      <p class="text-gray-600 dark:text-gray-200 mt-2"><strong>Strand/Standard:</strong> ${lesson['Strand/Standard']}</p>
+      <p class="text-gray-600 dark:text-gray-200 mt-2"><strong>Concepts:</strong> ${lesson.Concepts}</p>
+      <p class="text-gray-600 dark:text-gray-200 mt-2"><strong>Starter:</strong> ${lesson.Starter}</p>
+      <p class="text-gray-600 dark:text-gray-200 mt-2"><strong>Description:</strong> ${lesson.Description}</p>
+    </div>
+  `;
+
+  carouselPrev.disabled = quadrant.currentCarouselPage === 0;
+  carouselNext.disabled = quadrant.currentCarouselPage === quadrant.lessons.length - 1;
+}
+
+function openStandardCarousel(quadrant, standard) {
+  const filteredLessons = quadrant.lessons.filter(lesson => lesson['Strand/Standard'] === standard);
+  if (filteredLessons.length === 0) {
+    errorMessage.textContent = 'No lessons found for this strand/standard.';
+    errorMessage.classList.remove('hidden');
+    return;
+  }
+
+  quadrant.currentStandardLessons = filteredLessons;
+  quadrant.currentStandardPage = 0;
+  standardTitle.textContent = `Lessons for ${standard}`;
+  renderStandardLesson(quadrant);
+  standardModal.classList.remove('hidden');
+}
+
+function renderStandardLesson(quadrant) {
+  const lesson = quadrant.currentStandardLessons[quadrant.currentStandardPage];
+  if (!lesson) return;
+
+  standardContent.innerHTML = `
+    <div class="border-l-4 border-blue-500 pl-4">
+      <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">${lesson.Day}: ${lesson.Title}</h2>
+      <p class="text-gray-600 dark:text-gray-200 mt-2"><strong>Strand/Standard:</strong> ${lesson['Strand/Standard']}</p>
+      <p class="text-gray-600 dark:text-gray-200 mt-2"><strong>Concepts:</strong> ${lesson.Concepts}</p>
+      <p class="text-gray-600 dark:text-gray-200 mt-2"><strong>Starter:</strong> ${lesson.Starter}</p>
+      <p class="text-gray-600 dark:text-gray-200 mt-2"><strong>Description:</strong> ${lesson.Description}</p>
+    </div>
+  `;
+
+  standardPrev.disabled = quadrant.currentStandardPage === 0;
+  standardNext.disabled = quadrant.currentStandardPage === quadrant.currentStandardLessons.length - 1;
 }
 
 function updateAllQuadrantsByDate() {
@@ -155,6 +233,48 @@ quadrants.forEach(quadrant => {
       renderLesson(quadrant);
     }
   });
+});
+
+// Carousel navigation
+carouselPrev.addEventListener('click', () => {
+  const quadrant = quadrants.find(q => q.courseSelect.id === carouselContent.dataset.quadrant);
+  if (quadrant.currentCarouselPage > 0) {
+    quadrant.currentCarouselPage--;
+    renderCarouselLesson(quadrant);
+  }
+});
+
+carouselNext.addEventListener('click', () => {
+  const quadrant = quadrants.find(q => q.courseSelect.id === carouselContent.dataset.quadrant);
+  if (quadrant.currentCarouselPage < quadrant.lessons.length - 1) {
+    quadrant.currentCarouselPage++;
+    renderCarouselLesson(quadrant);
+  }
+});
+
+closeCarousel.addEventListener('click', () => {
+  carouselModal.classList.add('hidden');
+});
+
+// Standard carousel navigation
+standardPrev.addEventListener('click', () => {
+  const quadrant = quadrants.find(q => q.courseSelect.id === standardContent.dataset.quadrant);
+  if (quadrant.currentStandardPage > 0) {
+    quadrant.currentStandardPage--;
+    renderStandardLesson(quadrant);
+  }
+});
+
+standardNext.addEventListener('click', () => {
+  const quadrant = quadrants.find(q => q.courseSelect.id === standardContent.dataset.quadrant);
+  if (quadrant.currentStandardPage < quadrant.currentStandardLessons.length - 1) {
+    quadrant.currentStandardPage++;
+    renderStandardLesson(quadrant);
+  }
+});
+
+closeStandard.addEventListener('click', () => {
+  standardModal.classList.add('hidden');
 });
 
 // Date picker event

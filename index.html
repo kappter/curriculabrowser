@@ -69,7 +69,7 @@
           <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_ComputerProgrammingAdvanced_Semester2_LessonPlan.csv">Computer Programming Advanced (Semester 2)</option>
           <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_Robotics1_LessonPlan.csv">Robotics 1</option>
           <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_DigitalMedia1_LessonPlan.csv">Digital Media 1</option>
-         <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_DigitalMedia2_LessonPlan.csv">Digital Media 2</option>
+          <option value="https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_DigitalMedia2_LessonPlan.csv">Digital Media 2</option>
         </select>
         <div id="lessonCard1" class="text-sm sm:text-base"></div>
         <div class="flex justify-center mt-4 space-x-2">
@@ -144,9 +144,37 @@
     </div>
     <div id="errorMessage" class="hidden text-center text-red-500 mt-4"></div>
   </div>
+  <!-- Day Carousel Modal -->
+  <div id="carouselModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white dark:bg-gray-700 p-6 rounded-lg max-w-lg w-full max-h-[80vh] flex flex-col">
+      <div class="flex justify-between items-center mb-4">
+        <h2 id="carouselTitle" class="text-xl font-semibold text-gray-800 dark:text-gray-200"></h2>
+        <button id="closeCarousel" class="text-gray-600 dark:text-gray-200 hover:text-gray-800 dark:hover:text-gray-100">✕</button>
+      </div>
+      <div id="carouselContent" class="flex-grow overflow-y-auto"></div>
+      <div class="flex justify-between mt-4">
+        <button id="carouselPrev" class="carousel-arrow bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-blue-600">↑</button>
+        <button id="carouselNext" class="carousel-arrow bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-blue-600">↓</button>
+      </div>
+    </div>
+  </div>
+  <!-- Standard Carousel Modal -->
+  <div id="standardModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white dark:bg-gray-700 p-6 rounded-lg max-w-lg w-full max-h-[80vh] flex flex-col">
+      <div class="flex justify-between items-center mb-4">
+        <h2 id="standardTitle" class="text-xl font-semibold text-gray-800 dark:text-gray-200"></h2>
+        <button id="closeStandard" class="text-gray-600 dark:text-gray-200 hover:text-gray-800 dark:hover:text-gray-100">✕</button>
+      </div>
+      <div id="standardContent" class="flex-grow overflow-y-auto"></div>
+      <div class="flex justify-between mt-4">
+        <button id="standardPrev" class="carousel-arrow bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-blue-600">↑</button>
+        <button id="standardNext" class="carousel-arrow bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-blue-600">↓</button>
+      </div>
+    </div>
+  </div>
   <footer class="bg-gray-200 py-2 text-center text-xs text-gray-600 fixed bottom-0 w-full flex justify-center items-center space-x-4">
     <label class="flex items-center space-x-2">
-      <span>Dark</span>
+      <span>Dark Mode</span>
       <input type="checkbox" id="darkModeToggle" class="w-4 h-4">
     </label>
     <span>© 2025 Kappter Education</span>
