@@ -1,4 +1,5 @@
 function loadCSV(quadrant, file) {
+  if (quadrant.lessons.length > 0) return; // Skip if already loaded
   quadrant.lessonCard.innerHTML = '<p class="text-center text-gray-500">Loading...</p>';
   console.log(`Starting to load CSV for quadrant: ${file}`);
   Papa.parse(file, {
@@ -182,7 +183,7 @@ function updateAllQuadrantsByDate() {
         quadrant.lessonCard.innerHTML += '<p class="text-yellow-600 dark:text-yellow-300 mt-2">Note: This date exceeds the 40-lesson plan. Displaying Lesson 40.</p>';
       }
     }
-    if (selectedDate.toISOString().split('T')[0] === '2025-08-13') {
+    if (selectedDate.toISOString().split('T')[0] === '2025-08-13' && quadrant.courseSelect.value !== quadrant.defaultCourse) {
       quadrant.courseSelect.value = quadrant.defaultCourse;
       loadCSV(quadrant, quadrant.defaultCourse);
     }
