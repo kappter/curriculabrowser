@@ -1,59 +1,82 @@
-# Block Schedule Lesson Plan Viewer
+# Curriculum Browser
 
-A web-based application for viewing lesson plans for Utah CTE computer science and robotics courses, designed for a four-class block schedule. Hosted at [https://kappter.github.io/curriculabrowser/](https://kappter.github.io/curriculabrowser/).
+## Overview
+The Curriculum Browser is a web application designed to help educators and students view lesson plans for Career and Technical Education (CTE) courses, specifically tailored for block scheduling. It displays lessons for up to four courses simultaneously, with support for navigating lessons by date, day, or Utah CTE Strand/Standard. The application is built with HTML, CSS (Tailwind), and JavaScript, using Papa Parse for CSV parsing and GitHub Pages for hosting.
 
 ## Features
-- **Date Picker**: Select a date to view lesson plans for all four classes on that day, mapped to a 40-lesson semester (~43 block days, skipping weekends and holidays).
-- **Four Quadrants**: Each quadrant displays:
-  - A dropdown to select a course (e.g., Computer Programming 1, Advanced, Robotics 1).
-  - Lesson content (Day, Strand/Standard, Title, Concepts, Starter, Description).
-  - Pagination dropdown and `<`/`>` buttons for navigating lessons independently.
-- **Responsive Design**: Mobile-friendly (single-column layout <640px) and desktop-optimized (2x2 grid ≥640px).
-- **Dark Mode**: Toggle in the footer for light/dark themes, with readable text (darkened dropdowns in dark mode) and `localStorage` persistence.
-- **CSV Integration**: Loads lesson plans from CSV files hosted in the repository (e.g., `Master_ComputerProgrammingAdvanced_Semester1_LessonPlan.csv`).
-- **Utah CTE Alignment**: Supports standards for computer science (Java, C++, Python, C#) and Robotics 1 (VEX components), with 40 lessons per semester course.
+- **Quad-View Display**: View lesson plans for up to four courses in a 2x2 grid (desktop) or single-column layout (mobile, <640px).
+- **Date-Based Navigation**: Select a date to display lessons for a specific day (1–40), accounting for weekdays and holidays (e.g., Thanksgiving, winter break).
+- **Lesson Carousel**: Click a lesson’s day title to view all lessons for a course in a navigable carousel.
+- **Strand/Standard Carousel**: Click a Strand/Standard link to view all lessons for that standard (e.g., “Strand 2 / Standard 1” for Days 4–6 in Computer Programming 1).
+- **Dark Mode**: Toggle dark mode for better readability, with high-contrast text (#f9fafb on #374151).
+- **Mobile-Friendly**: Responsive design with touch-friendly navigation arrows (≥40px) and readable text (16px body, 18px headers).
+- **CSV Integration**: Loads lesson plans from CSV files (e.g., `Master_ComputerProgramming1_LessonPlan.csv`) with fields: `Day`, `Strand/Standard`, `Title`, `Concepts`, `Starter`, `Description`.
 
 ## Setup
-1. **Access via GitHub Pages**:
-   - Visit [https://kappter.github.io/curriculabrowser/](https://kappter.github.io/curriculabrowser/) to use the app directly.
-2. **Local Development**:
-   - Clone the repository: `git clone https://github.com/kappter/curriculabrowser.git`
-   - Serve the `index.html` file using a local server (e.g., `python -m http.server 8000` or VS Code Live Server).
-   - Ensure internet access for CDN dependencies (PapaParse, Tailwind CSS).
-3. **Dependencies**:
-   - [PapaParse](https://www.papaparse.com/) (v5.4.1, via CDN) for CSV parsing.
-   - [Tailwind CSS](https://tailwindcss.com/) (v2.2.19, via CDN) for styling.
-   - No build step required; all files (`index.html`, `styles.css`, `script.js`) are static.
-4. **Adding CSVs**:
-   - Place new CSV files in the repository root (e.g., `Master_NewCourse_LessonPlan.csv`).
-   - Update `index.html` course dropdowns with the new CSV URL (e.g., `https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_NewCourse_LessonPlan.csv`).
-   - Ensure CSVs have columns: `Day`, `Strand/Standard`, `Title`, `Concepts`, `Starter`, `Description`.
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/kappter/curriculabrowser.git
+   cd curriculabrowser
+   ```
+2. **Serve Locally**:
+   - Use a local server (e.g., `npx serve` or VS Code Live Server) to test the application.
+   - Ensure `Master_ComputerProgramming1_LessonPlan.csv` is hosted at `https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_ComputerProgramming1_LessonPlan.csv`.
+3. **Deploy to GitHub Pages**:
+   - Push changes to the `main` branch.
+   - Enable GitHub Pages in the repository settings (Settings → Pages → Source: `main` branch, `/` (root)).
+   - Access at `https://kappter.github.io/curriculabrowser/`.
 
 ## Usage
-1. **Select a Date**:
-   - Use the date picker to choose a class day (default: today, e.g., July 8, 2025).
-   - The app maps the date to a lesson day (1–40) based on a semester start (September 1, 2025) and skips weekends/holidays (e.g., Thanksgiving, winter break).
-2. **Choose Courses**:
-   - Select a course in each quadrant’s dropdown (e.g., Computer Programming Advanced Semester 1).
-   - Each quadrant operates independently, allowing different courses or lessons.
-3. **Navigate Lessons**:
-   - Use the pagination dropdown or `<`/`>` buttons to view specific lessons (1–40).
-   - Date picker selection overrides pagination to show the corresponding lesson day across all quadrants.
-4. **Toggle Dark Mode**:
-   - Click the “Dark Mode” checkbox in the footer to switch themes.
-   - Theme preference persists across sessions via `localStorage`.
-5. **View Lesson Plans**:
-   - Each quadrant displays the lesson’s Day, Strand/Standard, Title, Concepts, Starter, and Description.
-   - Aligned with Utah CTE standards, supporting programming (Java, C++, Python, C#) and Robotics 1 (VEX components).
+- **Select Courses**: Choose a course (e.g., “Computer Programming 1”) in each quadrant’s dropdown.
+- **Pick a Date**: Use the date picker to select a date (e.g., September 15, 2025, ~Day 10). Lessons adjust based on the semester start (September 1, 2025) and holidays.
+- **Navigate Lessons**:
+  - Use page select or prev/next buttons to view specific lessons.
+  - Click the day title (e.g., “Day 10: Input/Output Basics”) to open a carousel of all 40 lessons.
+  - Click a Strand/Standard (e.g., “Strand 2 / Standard 1”) to view lessons for that standard.
+- **Dark Mode**: Toggle dark mode for low-light environments (saved to localStorage).
+- **Mobile**: View lessons in a single-column layout with touch-friendly controls.
+
+## File Structure
+- `index.html`: Main HTML file with the quad-view layout, date picker, and modals.
+- `script.js`: JavaScript logic for CSV parsing, lesson rendering, and carousel navigation.
+- `styles.css`: Tailwind CSS for styling, including dark mode and responsive design.
+- `Master_ComputerProgramming1_LessonPlan.csv`: Sample CSV with 40 lessons for Computer Programming 1, aligned with Utah CTE standards.
+
+## Recent Updates
+- **July 9, 2025**:
+  - Fixed `Uncaught SyntaxError: Unexpected identifier 'Starting'` in `script.js` (line 68) by ensuring no stray console output was included.
+  - Improved dark mode readability by changing text color to `#f9fafb` (from `#e5e7eb`) and increasing description font size to 16px (mobile) and 18px (desktop).
+  - Fixed carousel navigation `TypeError` by adding `dataset.quadrant` to `carouselContent` and `standardContent`.
+  - Added empty favicon link (`<link rel="icon" href="data:;base64,iVBORw0KGgo=">`) to suppress `favicon.ico` 404 error.
+- **Prior**:
+  - Added Day and Strand/Standard carousels for lesson navigation.
+  - Implemented block schedule logic with holiday exclusions (e.g., Thanksgiving, winter break).
+
+## Testing
+- **Desktop (≥640px)**:
+  - Verify 2x2 grid, lesson rendering (e.g., Day 10: “Input/Output Basics”), and carousel navigation (40 lessons for Day, variable for Strand/Standard).
+  - Check dark mode text readability (#f9fafb on #374151).
+  - Confirm console logs show 40 valid lessons with no `SyntaxError` or `TypeError`.
+- **Mobile (<640px)**:
+  - Confirm single-column layout, touch-friendly arrows (≥40px), and readable text (16px descriptions, 18px headers).
+  - Test carousels and modals (90% width, scrollable).
+- **Console**:
+  - Expect: `Starting to load CSV...`, `Total rows received: 40`, `Filtered valid lessons: 40`.
+  - Ensure no errors (`SyntaxError`, `TypeError`, or favicon 404).
+
+## Known Issues
+- If lessons don’t render, check `script.js` for syntax errors (e.g., unquoted strings) and ensure CSV is accessible.
+- If dark mode text is unreadable, verify `dark:text-gray-100` is applied and no conflicting CSS exists.
+
+## Future Improvements
+- Add a search bar for lessons or standards.
+- Integrate Canvas API for `.pde` file submissions (Processing projects).
+- Support additional CTE courses (e.g., Digital Media 1/2 for yearbook).
+- List unique strands/standards in a carousel instead of lessons per standard.
 
 ## Contributing
-- Fork the repository: `https://github.com/kappter/curriculabrowser`.
-- Add new features, CSVs, or bug fixes via pull requests.
-- Ensure CSVs follow the required format (see Setup).
-- Test changes locally and on GitHub Pages, checking console for errors (e.g., CSV parsing, file loading).
-- Contact the maintainer for curriculum-specific updates (e.g., new Utah CTE courses).
+- Fork the repository, make changes, and submit a pull request.
+- Report issues via GitHub Issues, including console output, screenshots, and steps to reproduce.
 
 ## License
-MIT License. See [LICENSE](LICENSE) for details.
-
-© 2025 Kappter Education
+MIT License. See `LICENSE` for details.
