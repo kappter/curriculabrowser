@@ -1,10 +1,70 @@
-function loadCSV(quadrant, file) {
-  if (quadrant.lessons.length > 0) {
-    console.log(`Skipping load for ${file} as lessons are already loaded.`);
-    return;
+const datePicker = document.getElementById('datePicker');
+const darkModeToggle = document.getElementById('darkModeToggle');
+const errorMessage = document.getElementById('errorMessage');
+const carouselModal = document.getElementById('carouselModal');
+const carouselTitle = document.getElementById('carouselTitle');
+const carouselContent = document.getElementById('carouselContent');
+const carouselPrev = document.getElementById('carouselPrev');
+const carouselNext = document.getElementById('carouselNext');
+const closeCarousel = document.getElementById('closeCarousel');
+const standardModal = document.getElementById('standardModal');
+const standardTitle = document.getElementById('standardTitle');
+const standardContent = document.getElementById('standardContent');
+const standardPrev = document.getElementById('standardPrev');
+const standardNext = document.getElementById('standardNext');
+const closeStandard = document.getElementById('closeStandard');
+
+const quadrants = [
+  { courseSelect: document.getElementById('courseSelect1'), lessonCard: document.getElementById('lessonCard1'), pageSelect: document.getElementById('pageSelect1'), prevPage: document.getElementById('prevPage1'), nextPage: document.getElementById('nextPage1'), lessons: [], currentPage: 1 },
+  { courseSelect: document.getElementById('courseSelect2'), lessonCard: document.getElementById('lessonCard2'), pageSelect: document.getElementById('pageSelect2'), prevPage: document.getElementById('prevPage2'), nextPage: document.getElementById('nextPage2'), lessons: [], currentPage: 1 },
+  { courseSelect: document.getElementById('courseSelect3'), lessonCard: document.getElementById('lessonCard3'), pageSelect: document.getElementById('pageSelect3'), prevPage: document.getElementById('prevPage3'), nextPage: document.getElementById('nextPage3'), lessons: [], currentPage: 1 },
+  { courseSelect: document.getElementById('courseSelect4'), lessonCard: document.getElementById('lessonCard4'), pageSelect: document.getElementById('pageSelect4'), prevPage: document.getElementById('prevPage4'), nextPage: document.getElementById('nextPage4'), lessons: [], currentPage: 1 }
+];
+
+// Semester start date and holidays (configurable)
+const SEMESTER_START = new Date('2025-09-01');
+const HOLIDAYS = [
+  '2025-11-27', // Thanksgiving
+  '2025-11-28', // Day after Thanksgiving
+  '2025-12-24', // Winter break
+  '2025-12-25',
+  '2025-12-31',
+  '2026-01-01'
+];
+
+// Initialize dark mode from localStorage
+if (localStorage.getItem('darkMode') === 'enabled') {
+  document.body.classList.add('dark-mode');
+  darkModeToggle.checked = true;
+}
+
+// Dark mode toggle event
+darkModeToggle.addEventListener('change', () => {
+  document.body.classList.toggle('dark-mode');
+  localStorage.setItem('darkMode', document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
+});
+
+// Calculate lesson day from selected date (1–40)
+function getLessonDay(selectedDate) {
+  const start = new Date(SEMESTER_START);
+  let days = 0;
+  let current = new Date(start);
+
+  while (current <= selectedDate) {
+    const isWeekday = current.getDay() !== 0 && current.getDay() !== 6;
+    const isNotHoliday = !HOLIDAYS.includes(current.toISOString().split('T')[0]);
+    if (isWeekday && isNotHoliday) {
+      days++;
+    }
+    current.setDate(current.getDate() + 1);
   }
+
+  return Math.min(Math.max(1, days), 40);
+}
+
+function loadCSV(quadrant, file) {
   quadrant.lessonCard.innerHTML = '<p class="text-center text-gray-500">Loading...</p>';
-  console.log(`Attempting to load CSV for quadrant: ${quadrant.courseSelect.id} from ${file}`);
+  console.log(`Starting to load CSV for quadrant: ${file}`);
   Papa.parse(file, {
     download: true,
     header: true,
@@ -15,7 +75,7 @@ function loadCSV(quadrant, file) {
         console.log(`Row ${index + 1}: ${isValid ? 'Valid' : 'Invalid'}, Data: ${JSON.stringify(lesson)}`);
         return isValid;
       });
-      console.log(`Filtered valid lessons for ${quadrant.courseSelect.id}: ${quadrant.lessons.length}`);
+      console.log(`Filtered valid lessons: ${quadrant.lessons.length}`);
       if (quadrant.lessons.length === 0) {
         showError(quadrant, 'No valid lessons found in the CSV file.');
         return;
@@ -24,7 +84,7 @@ function loadCSV(quadrant, file) {
       renderLesson(quadrant);
     },
     error: function(error) {
-      console.error(`Error loading CSV for ${quadrant.courseSelect.id} from ${file}: ${error.message}`);
+      console.error(`Error loading CSV: ${error.message}`);
       showError(quadrant, 'Error loading CSV file. Please check the file path or server configuration.');
     }
   });
@@ -59,11 +119,11 @@ function renderLesson(quadrant) {
 
   quadrant.lessonCard.innerHTML = `
     <div class="border-l-4 border-blue-500 pl-4">
-      <h2 class="day-title text-lg sm:text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2" data-quadrant="${quadrant.courseSelect.id}">${lesson.Day}: ${lesson.Title}</h2>
-      <p class="text-gray-600 dark:text-gray-100"><strong>Strand/Standard:</strong> <span class="standard-link" data-quadrant="${quadrant.courseSelect.id}" data-standard="${lesson['Strand/Standard']}">${lesson['Strand/Standard']}</span></p>
-      <p class="text-gray-600 dark:text-gray-100 mt-2"><strong>Concepts:</strong> ${lesson.Concepts}</p>
-      <p class="text-gray-600 dark:text-gray-100 mt-2"><strong>Starter:</strong> ${lesson.Starter}</p>
-      <p class="text-gray-600 dark:text-gray-100 text-base sm:text-lg mt-2"><strong>Description:</strong> ${lesson.Description}</p>
+      <h2 class="day-title text-lg sm:text-xl font-semibold text-gray-800 mb-2" data-quadrant="${quadrant.courseSelect.id}">${lesson.Day}: ${lesson.Title}</h2>
+      <p class="text-gray-600"><strong>Strand/Standard:</strong> <span class="standard-link" data-quadrant="${quadrant.courseSelect.id}" data-standard="${lesson['Strand/Standard']}">${lesson['Strand/Standard']}</span></p>
+      <p class="text-gray-600 mt-2"><strong>Concepts:</strong> ${lesson.Concepts}</p>
+      <p class="text-gray-600 mt-2"><strong>Starter:</strong> ${lesson.Starter}</p>
+      <p class="text-gray-600 mt-2"><strong>Description:</strong> ${lesson.Description}</p>
     </div>
   `;
 
@@ -74,19 +134,14 @@ function renderLesson(quadrant) {
     openCarousel(quadrant, quadrant.currentPage);
   });
 
-  const standardLink = quadrant.lessonCard.querySelector('.standard-link');
-  if (standardLink) {
-    standardLink.addEventListener('click', () => {
-      console.log(`Opening standard carousel for quadrant: ${quadrant.courseSelect.id}, standard: ${standardLink.dataset.standard}`);
-      openStandardCarousel(quadrant, standardLink.dataset.standard);
-    });
-  }
+  quadrant.lessonCard.querySelector('.standard-link').addEventListener('click', () => {
+    openStandardCarousel(quadrant, lesson['Strand/Standard']);
+  });
 }
 
 function openCarousel(quadrant, startPage) {
   carouselTitle.textContent = `Lessons for ${quadrant.courseSelect.options[quadrant.courseSelect.selectedIndex].text}`;
   carouselContent.innerHTML = '';
-  carouselContent.dataset.quadrant = quadrant.courseSelect.id;
   quadrant.currentCarouselPage = startPage - 1;
   renderCarouselLesson(quadrant);
   carouselModal.classList.remove('hidden');
@@ -98,11 +153,11 @@ function renderCarouselLesson(quadrant) {
 
   carouselContent.innerHTML = `
     <div class="border-l-4 border-blue-500 pl-4">
-      <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-100">${lesson.Day}: ${lesson.Title}</h2>
-      <p class="text-gray-600 dark:text-gray-100 mt-2"><strong>Strand/Standard:</strong> ${lesson['Strand/Standard']}</p>
-      <p class="text-gray-600 dark:text-gray-100 mt-2"><strong>Concepts:</strong> ${lesson.Concepts}</p>
-      <p class="text-gray-600 dark:text-gray-100 mt-2"><strong>Starter:</strong> ${lesson.Starter}</p>
-      <p class="text-gray-600 dark:text-gray-100 text-base sm:text-lg mt-2"><strong>Description:</strong> ${lesson.Description}</p>
+      <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">${lesson.Day}: ${lesson.Title}</h2>
+      <p class="text-gray-600 dark:text-gray-200 mt-2"><strong>Strand/Standard:</strong> ${lesson['Strand/Standard']}</p>
+      <p class="text-gray-600 dark:text-gray-200 mt-2"><strong>Concepts:</strong> ${lesson.Concepts}</p>
+      <p class="text-gray-600 dark:text-gray-200 mt-2"><strong>Starter:</strong> ${lesson.Starter}</p>
+      <p class="text-gray-600 dark:text-gray-200 mt-2"><strong>Description:</strong> ${lesson.Description}</p>
     </div>
   `;
 
@@ -111,66 +166,36 @@ function renderCarouselLesson(quadrant) {
 }
 
 function openStandardCarousel(quadrant, standard) {
-  const normalizedStandard = standard.trim();
-  console.log(`Filtering lessons for standard: "${normalizedStandard}" in quadrant: ${quadrant.courseSelect.id}`);
-  const filteredLessons = quadrant.lessons.filter(lesson => {
-    const lessonStandard = lesson['Strand/Standard'].trim();
-    console.log(`Comparing lesson standard: "${lessonStandard}" with "${normalizedStandard}"`);
-    return lessonStandard === normalizedStandard;
-  });
-  console.log(`Found ${filteredLessons.length} lessons for standard: "${normalizedStandard}" in quadrant: ${quadrant.courseSelect.id}`);
-
+  const filteredLessons = quadrant.lessons.filter(lesson => lesson['Strand/Standard'] === standard);
   if (filteredLessons.length === 0) {
-    errorMessage.textContent = `No lessons found for standard: ${normalizedStandard}`;
+    errorMessage.textContent = 'No lessons found for this strand/standard.';
     errorMessage.classList.remove('hidden');
     return;
   }
 
   quadrant.currentStandardLessons = filteredLessons;
   quadrant.currentStandardPage = 0;
-  standardTitle.textContent = `Lessons for ${normalizedStandard}`;
-  standardContent.dataset.quadrant = quadrant.courseSelect.id;
+  standardTitle.textContent = `Lessons for ${standard}`;
   renderStandardLesson(quadrant);
   standardModal.classList.remove('hidden');
-  standardModal.style.display = 'block';
 }
 
 function renderStandardLesson(quadrant) {
   const lesson = quadrant.currentStandardLessons[quadrant.currentStandardPage];
-  if (!lesson) {
-    standardContent.innerHTML = '<p class="text-center text-gray-500">No lesson available.</p>';
-    return;
-  }
+  if (!lesson) return;
 
   standardContent.innerHTML = `
     <div class="border-l-4 border-blue-500 pl-4">
-      <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-100">${lesson.Day}: ${lesson.Title}</h2>
-      <p class="text-gray-600 dark:text-gray-100 mt-2"><strong>Strand/Standard:</strong> ${lesson['Strand/Standard']}</p>
-      <p class="text-gray-600 dark:text-gray-100 mt-2"><strong>Concepts:</strong> ${lesson.Concepts}</p>
-      <p class="text-gray-600 dark:text-gray-100 mt-2"><strong>Starter:</strong> ${lesson.Starter}</p>
-      <p class="text-gray-600 dark:text-gray-100 text-base sm:text-lg mt-2"><strong>Description:</strong> ${lesson.Description}</p>
+      <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">${lesson.Day}: ${lesson.Title}</h2>
+      <p class="text-gray-600 dark:text-gray-200 mt-2"><strong>Strand/Standard:</strong> ${lesson['Strand/Standard']}</p>
+      <p class="text-gray-600 dark:text-gray-200 mt-2"><strong>Concepts:</strong> ${lesson.Concepts}</p>
+      <p class="text-gray-600 dark:text-gray-200 mt-2"><strong>Starter:</strong> ${lesson.Starter}</p>
+      <p class="text-gray-600 dark:text-gray-200 mt-2"><strong>Description:</strong> ${lesson.Description}</p>
     </div>
   `;
 
   standardPrev.disabled = quadrant.currentStandardPage === 0;
   standardNext.disabled = quadrant.currentStandardPage === quadrant.currentStandardLessons.length - 1;
-}
-
-function getLessonDay(selectedDate) {
-  const start = new Date(SEMESTER_START);
-  let days = 0;
-  let current = new Date(start);
-
-  while (current <= selectedDate) {
-    const isWeekday = current.getDay() !== 0 && current.getDay() !== 6;
-    const isNotHoliday = !HOLIDAYS.includes(current.toISOString().split('T')[0]);
-    if (isWeekday && isNotHoliday) {
-      days++;
-    }
-    current.setDate(current.getDate() + 1);
-  }
-
-  return Math.min(Math.max(1, days), 40);
 }
 
 function updateAllQuadrantsByDate() {
@@ -182,110 +207,13 @@ function updateAllQuadrantsByDate() {
     if (quadrant.lessons.length > 0) {
       populatePageSelect(quadrant);
       renderLesson(quadrant);
-      if (lessonDay === 40 && selectedDate > new Date(SEMESTER_START)) {
-        quadrant.lessonCard.innerHTML += '<p class="text-yellow-600 dark:text-yellow-300 mt-2">Note: This date exceeds the 40-lesson plan. Displaying Lesson 40.</p>';
-      }
-    }
-    if (selectedDate.toISOString().split('T')[0] === '2025-08-13' && quadrant.courseSelect.value !== quadrant.defaultCourse) {
-      console.log(`Setting course to ${quadrant.defaultCourse} for quadrant ${quadrant.courseSelect.id} on August 13`);
-      quadrant.courseSelect.value = quadrant.defaultCourse;
     }
   });
 }
 
-const datePicker = document.getElementById('datePicker');
-const darkModeToggle = document.getElementById('darkModeToggle');
-const errorMessage = document.getElementById('errorMessage');
-const carouselModal = document.getElementById('carouselModal');
-const carouselTitle = document.getElementById('carouselTitle');
-const carouselContent = document.getElementById('carouselContent');
-const carouselPrev = document.getElementById('carouselPrev');
-const carouselNext = document.getElementById('carouselNext');
-const closeCarousel = document.getElementById('closeCarousel');
-const standardModal = document.getElementById('standardModal');
-const standardTitle = document.getElementById('standardTitle');
-const standardContent = document.getElementById('standardContent');
-const standardPrev = document.getElementById('standardPrev');
-const standardNext = document.getElementById('standardNext');
-const closeStandard = document.getElementById('closeStandard');
-
-const quadrants = [
-  { courseSelect: document.getElementById('courseSelect1'), lessonCard: document.getElementById('lessonCard1'), pageSelect: document.getElementById('pageSelect1'), prevPage: document.getElementById('prevPage1'), nextPage: document.getElementById('nextPage1'), lessons: [], currentPage: 1, defaultCourse: 'https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_DigitalMedia1_LessonPlan.csv' },
-  { courseSelect: document.getElementById('courseSelect2'), lessonCard: document.getElementById('lessonCard2'), pageSelect: document.getElementById('pageSelect2'), prevPage: document.getElementById('prevPage2'), nextPage: document.getElementById('nextPage2'), lessons: [], currentPage: 1, defaultCourse: 'https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_GameDevelopmentFundamentals1_LessonPlan.csv' },
-  { courseSelect: document.getElementById('courseSelect3'), lessonCard: document.getElementById('lessonCard3'), pageSelect: document.getElementById('pageSelect3'), prevPage: document.getElementById('prevPage3'), nextPage: document.getElementById('nextPage3'), lessons: [], currentPage: 1, defaultCourse: 'https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_ComputerProgrammingAdvanced_LessonPlan.csv' },
-  { courseSelect: document.getElementById('courseSelect4'), lessonCard: document.getElementById('lessonCard4'), pageSelect: document.getElementById('pageSelect4'), prevPage: document.getElementById('prevPage4'), nextPage: document.getElementById('nextPage4'), lessons: [], currentPage: 1, defaultCourse: 'https://raw.githubusercontent.com/kappter/curriculabrowser/main/Master_DigitalMedia1_LessonPlan.csv' }
-];
-
-const SEMESTER_START = new Date('2025-09-01');
-const HOLIDAYS = [
-  '2025-11-27',
-  '2025-11-28',
-  '2025-12-24',
-  '2025-12-25',
-  '2025-12-31',
-  '2026-01-01'
-];
-
-// Initialize dark mode
-if (localStorage.getItem('darkMode') === 'enabled') {
-  document.body.classList.add('dark-mode');
-  darkModeToggle.checked = true;
-}
-
-darkModeToggle.addEventListener('change', () => {
-  document.body.classList.toggle('dark-mode');
-  localStorage.setItem('darkMode', document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
-});
-
-// Carousel navigation
-carouselPrev.addEventListener('click', () => {
-  const quadrant = quadrants.find(q => q.courseSelect.id === carouselContent.dataset.quadrant);
-  if (quadrant && quadrant.currentCarouselPage > 0) {
-    quadrant.currentCarouselPage--;
-    renderCarouselLesson(quadrant);
-  }
-});
-
-carouselNext.addEventListener('click', () => {
-  const quadrant = quadrants.find(q => q.courseSelect.id === carouselContent.dataset.quadrant);
-  if (quadrant && quadrant.currentCarouselPage < quadrant.lessons.length - 1) {
-    quadrant.currentCarouselPage++;
-    renderCarouselLesson(quadrant);
-  }
-});
-
-closeCarousel.addEventListener('click', () => {
-  carouselModal.classList.add('hidden');
-});
-
-// Standard carousel navigation
-standardPrev.addEventListener('click', () => {
-  const quadrant = quadrants.find(q => q.courseSelect.id === standardContent.dataset.quadrant);
-  if (quadrant && quadrant.currentStandardPage > 0) {
-    quadrant.currentStandardPage--;
-    renderStandardLesson(quadrant);
-  }
-});
-
-standardNext.addEventListener('click', () => {
-  const quadrant = quadrants.find(q => q.courseSelect.id === standardContent.dataset.quadrant);
-  if (quadrant && quadrant.currentStandardPage < quadrant.currentStandardLessons.length - 1) {
-    quadrant.currentStandardPage++;
-    renderStandardLesson(quadrant);
-  }
-});
-
-closeStandard.addEventListener('click', () => {
-  standardModal.classList.add('hidden');
-  standardModal.style.display = 'none';
-});
-
-// Date picker event
-datePicker.addEventListener('change', updateAllQuadrantsByDate);
-
 // Initialize quadrants
 quadrants.forEach(quadrant => {
-  loadCSV(quadrant, quadrant.defaultCourse);
+  loadCSV(quadrant, quadrant.courseSelect.value);
   quadrant.courseSelect.addEventListener('change', () => {
     loadCSV(quadrant, quadrant.courseSelect.value);
   });
@@ -307,6 +235,51 @@ quadrants.forEach(quadrant => {
   });
 });
 
-// Set default date to August 13 for testing
-datePicker.value = '2025-08-13';
+// Carousel navigation
+carouselPrev.addEventListener('click', () => {
+  const quadrant = quadrants.find(q => q.courseSelect.id === carouselContent.dataset.quadrant);
+  if (quadrant.currentCarouselPage > 0) {
+    quadrant.currentCarouselPage--;
+    renderCarouselLesson(quadrant);
+  }
+});
+
+carouselNext.addEventListener('click', () => {
+  const quadrant = quadrants.find(q => q.courseSelect.id === carouselContent.dataset.quadrant);
+  if (quadrant.currentCarouselPage < quadrant.lessons.length - 1) {
+    quadrant.currentCarouselPage++;
+    renderCarouselLesson(quadrant);
+  }
+});
+
+closeCarousel.addEventListener('click', () => {
+  carouselModal.classList.add('hidden');
+});
+
+// Standard carousel navigation
+standardPrev.addEventListener('click', () => {
+  const quadrant = quadrants.find(q => q.courseSelect.id === standardContent.dataset.quadrant);
+  if (quadrant.currentStandardPage > 0) {
+    quadrant.currentStandardPage--;
+    renderStandardLesson(quadrant);
+  }
+});
+
+standardNext.addEventListener('click', () => {
+  const quadrant = quadrants.find(q => q.courseSelect.id === standardContent.dataset.quadrant);
+  if (quadrant.currentStandardPage < quadrant.currentStandardLessons.length - 1) {
+    quadrant.currentStandardPage++;
+    renderStandardLesson(quadrant);
+  }
+});
+
+closeStandard.addEventListener('click', () => {
+  standardModal.classList.add('hidden');
+});
+
+// Date picker event
+datePicker.addEventListener('change', updateAllQuadrantsByDate);
+
+// Set default date to today
+datePicker.value = new Date().toISOString().split('T')[0];
 updateAllQuadrantsByDate();
