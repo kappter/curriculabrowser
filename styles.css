@@ -61,70 +61,6 @@ body.dark-mode select {
   transition: all 0.3s ease;
 }
 
-/* Carousel modal styling */
-#carouselModal, #standardModal {
-  z-index: 20;
-}
-
-#carouselContent, #standardContent {
-  padding: 1rem;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
-  background-color: #ffffff;
-}
-
-body.dark-mode #carouselContent, body.dark-mode #standardContent {
-  border-color: #6b7280;
-  background-color: #374151;
-}
-
-/* Curved spinner arrow buttons */
-.carousel-arrow {
-  transition: transform 0.2s ease, background-color 0.2s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transform: rotate(5deg);
-}
-
-.carousel-arrow:hover {
-  transform: rotate(0deg) scale(1.1);
-}
-
-body.dark-mode .carousel-arrow {
-  background-color: #2563eb;
-}
-
-/* Style clickable day title and standard link */
-.day-title {
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-
-.day-title:hover {
-  color: #2563eb;
-}
-
-body.dark-mode .day-title:hover {
-  color: #60a5fa;
-}
-
-.standard-link {
-  cursor: pointer;
-  color: #2563eb;
-  text-decoration: underline;
-}
-
-body.dark-mode .standard-link {
-  color: #60a5fa;
-}
-
-.standard-link:hover {
-  color: #1e40af;
-}
-
-body.dark-mode .standard-link:hover {
-  color: #93c5fd;
-}
-
 /* Adjust font sizes and spacing for mobile */
 @media (max-width: 640px) {
   .quadrant {
@@ -150,13 +86,6 @@ body.dark-mode .standard-link:hover {
   footer input[type="checkbox"] {
     width: 16px;
     height: 16px;
-  }
-  #carouselModal .max-w-lg, #standardModal .max-w-lg {
-    max-width: 90%;
-  }
-  .carousel-arrow {
-    width: 36px;
-    height: 36px;
   }
 }
 
