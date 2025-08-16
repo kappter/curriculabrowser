@@ -1,0 +1,41 @@
+Day,Assignment Title,Standards to Check,Notes
+1,Programming Languages,Strand 1 Standard 1,Covers interpreted vs compiled, high-level vs low-level languages; includes a reflection artifact.
+2,Using an IDE,Strand 1 Standard 2,Covers IDE features, compile/run, debugging, syntax vs runtime vs logic errors; includes a debugged artifact.
+3,IDE Project,Strand 1 Performance Skills,Performance skill: Use an IDE to create a solution; project-based, takes precedence for recency.
+4,Programming Style Basics,Strand 2 Standard 1,Covers white space, naming conventions, constants vs variables; includes a refactored artifact.
+5,Identifier Formats,Strand 2 Standard 1,Covers camelCase, snake_case, PascalCase; builds on naming conventions.
+6,Output Formatting,Strand 2 Standard 1,Covers decimal places, dollar signs, sentence formatting; includes formatted output artifact.
+7,Software Development Life Cycle,Strand 2 Standard 2,Covers SDLC phases: Requirements, Design, Implementation, Testing, Release; includes a flowchart artifact.
+8,Designing Algorithms,Strand 2 Standard 2,Covers UML diagrams, pseudocode, top-down design; includes UML or pseudocode artifact.
+9,Development Project,Strand 2 Performance Skills,Performance skill: Demonstrate program development methodology through a project; project-based, takes precedence for recency.
+10,Input/Output Basics,Strand 3 Standard 1,Covers input vs output, I/O devices; includes a diagram artifact.
+11,Data Types Overview,Strand 3 Standard 2,Covers Boolean, Integer, Float, String; includes data types demonstration artifact.
+12,Declaring & Initializing Variables,Strand 3 Standard 2,Covers assignment, declaration vs initialization; includes variable declaration artifact.
+13,Arithmetic Operators,Strand 3 Standard 3,Covers addition, subtraction, multiplication, division, modulus; includes arithmetic operations artifact.
+14,Comparison & Logic Operators,Strand 3 Standard 3,Covers <, >, ==, AND, OR, NOT; includes logical expressions artifact.
+15,Order of Operations,Strand 3 Standard 3,Covers PEMMDAS, parenthesis, operator precedence; includes evaluated expressions artifact.
+16,Expressions,Strand 3 Standard 4,Covers operators + operands, syntactic correctness; includes corrected expressions artifact.
+17,Functions & Scope,Strand 3 Standard 5,Covers function use, local vs global variables; includes functions demonstrating scope artifact.
+18,Built-in vs User-defined Functions,Strand 3 Standard 5,Covers arguments, return values; includes built-in and user-defined functions artifact.
+19,Complex Data Types,Strand 3 Standard 6,Covers Strings, Arrays, Lists; includes Array and String usage artifact.
+20,Mini Project: Data & Functions,Strand 3 Performance Skills,Performance skill: Write programs demonstrating key programming concepts; project-based, takes precedence for recency.
+21,IF Statements,Strand 4 Standard 1,Covers IF, ELSE IF, ELSE logic, nesting; includes nested IF statements artifact.
+22,Loops: For Loops,Strand 4 Standard 2,Covers loop structure, initial/condition/update; includes for-loop artifact.
+23,Loops: While Loops,Strand 4 Standard 2,Covers while-loop logic, use cases; includes while-loop artifact.
+24,Nested Loops & Loop Exit,Strand 4 Standard 2,Covers break, condition met/failed, infinite loops; includes nested loops with break artifact.
+25,Complex Conditions,Strand 4 Standard 3,Covers relational + logical operators in loops and IFs; includes complex conditions artifact.
+26,Control Structures Project,Strand 4 Performance Skills,Performance skill: Write programs demonstrating control structures; project-based, takes precedence for recency.
+27,Careers in Programming,Strand 5 Standard 1,Covers team roles: leader, analyst, developer, SME; includes career summary artifact.
+28,Traits of Programmers,Strand 5 Standard 1,Covers problem solving, collaboration, creativity; includes reflection on trait artifact.
+29,Pathways and Trends,Strand 5 Standard 1,Covers related career paths, industry trends; includes debate position paper artifact.
+30,Ethics in Programming,Strand 5 Standard 2,Covers piracy, privacy, copyright, automation; includes ethics dilemma response artifact.
+31,Impact of Software,Strand 5 Standard 2,Covers workplace and societal implications; includes impact diagram artifact.
+32,Career Exploration Project,Strand 5 Performance Skills,Performance skill: Research and present a career in software development; project-based, takes precedence for recency.
+33,Professional Skills,Workplace Skills,Covers communication, teamwork, accountability; includes scenario analysis artifact.
+34,Vocabulary & Syntax Practice,Review,Covers key terms, syntax review; includes corrected syntax artifact.
+35,Problem Solving Strategies,Review,Covers decomposition, pattern recognition; includes pattern analysis artifact.
+36,Midterm Project,Assessment,Applies Strands 3–4; project-based, takes precedence for recency in those strands.
+37,Certification Practice,Assessment,Preps for Skill Certification Test #820; includes practice test artifact.
+38,Final Project Design,Assessment,Student-driven coding project design; includes design document artifact.
+39,Final Project Implementation,Assessment,Code, test, and present project; project-based, takes precedence for recency across strands.
+40,Reflection & Showcase,Wrap-up,Reviews progress and presents learning; includes reflection artifact.
