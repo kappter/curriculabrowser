@@ -1,0 +1,81 @@
+Day,Assignment Title,Standards to Check,Notes
+1,Introduction to Advanced Programming,S1.0,S1.1,S1.1.a,S1.1.b,S1.1.c,S1.1.d,S1.1.e,Starter 1 (632523),Introduces advanced programming concepts; includes Starter 1 for daily practice.
+2,Review of OOP Basics,S5.1,S5.1.a,Starter 2 (632524),Focuses on OOP basics like classes and encapsulation; includes Starter 2.
+3,Inheritance,S5.2,S5.2.a,S5.2.b,S5.2.c,S5.2.d,S5.2.e,Starter 3 (632525),Covers inheritance and polymorphism; includes Starter 3.
+4,Interfaces and Abstract Classes,S5.3,S5.3.a,S5.3.b,S5.3.c,Starter 4 (604988),Focuses on abstraction; includes Starter 4.
+5,Ongoing Group Project: Kickoff,S7.1,S7.1.a,S7.1.b,S7.2,S7.2.a,S7.2.b,PS7.a,PS7.b,Project assignment; initiates task management app; takes precedence for recency.
+6,Static vs Dynamic Arrays,S3.0,S3.1,S3.1.a,S3.1.b,Starter 5 (604989),Introduces array concepts; includes Starter 5.
+7,Array Operations,S3.1.c,S3.1.d,S2.1,S2.1.a,S2.1.b,Starter 6 (604990),Covers array operations and searching; includes Starter 6.
+8,Stacks,S4.0,S4.1,S4.1.a,S4.1.b,S4.1.c,S4.1.d,S4.1.e,Starter 7 (604991),Implements stacks; includes Starter 7.
+9,Queues,S4.0,S4.2,S4.2.a,S4.2.b,S4.2.c,S4.2.d,S4.2.e,Starter 8 (604992),Implements queues; includes Starter 8.
+10,Ongoing Group Project: Data Structure Design,S4.0,S4.1,S4.1.e,S4.2,S4.2.e,S3.0,S3.1,PS4,Project assignment; integrates arrays, stacks, queues; takes precedence for recency.
+11,Linked Lists,S4.0,PS4,Starter 9 (604993),Introduces linked lists; includes Starter 9; contributes to PS4.
+12,Doubly Linked Lists,S4.0,PS4,Starter 10 (604994),Covers doubly linked lists; includes Starter 10; contributes to PS4.
+13,Hash Tables,S2.0,S2.1,S2.1.a,S2.1.b,PS2.a,Starter 11 (604995),Implements hash tables; includes Starter 11.
+14,Binary Trees,S4.0,PS4,Starter 12 (604996),Implements binary trees; includes Starter 12; contributes to PS4.
+15,Ongoing Group Project: Advanced Data Structures,S4.0,S4.1,S4.2,S2.1,PS4,Project assignment; integrates advanced data structures; takes precedence for recency.
+16,Sorting Algorithms,S2.0,S2.2,S2.2.a,S2.2.c,PS2.b,Starter 13 (604997),Implements basic sorting algorithms; includes Starter 13.
+17,Advanced Sorting,S2.2,S2.2.b,S2.2.c,PS2.b,Starter 14 (604998),Implements advanced sorting; includes Starter 14.
+18,Searching Algorithms,S2.0,S2.1,S2.1.a,S2.1.b,PS2.a,Starter 15 (604999),Implements search algorithms; includes Starter 15.
+19,Algorithm Efficiency,S2.0,S2.1.b,S2.2.c,PS2.a,PS2.b,Starter 16 (605000),Analyzes algorithm efficiency; includes Starter 16.
+20,Ongoing Group Project: Algorithm Integration,S2.0,S2.1,S2.2,PS2.a,PS2.b,Project assignment; integrates sorting/searching; takes precedence for recency.
+21,Software Development Life Cycle,S6.0,S6.1,Starter 17 (605001),Introduces SDLC; includes Starter 17.
+22,Requirements Gathering,S6.0,S6.1,Starter 18 (605002),Covers requirements analysis; includes Starter 18.
+23,Design Patterns,S5.0,S5.1,S5.1.a,S5.1.b,Starter 19 (605003),Implements design patterns; includes Starter 19.
+24,UML Diagrams,S6.0,S6.1,S6.1.a,S6.1.b,S6.1.c,S6.1.d,Starter 20 (605004),Creates UML diagrams; includes Starter 20.
+25,Ongoing Group Project: Software Design,S6.0,S6.1,S7.1,S7.1.a,PS7.a,Project assignment; applies SDLC and UML; takes precedence for recency.
+26,File Handling,S1.1.e,PS1.b,Starter 21 (605005),Implements file operations; includes Starter 21.
+27,Exception Handling,S1.1.b,Starter 22 (605006),Implements exception handling; includes Starter 22.
+28,Unit Testing,S1.0,S1.1,Starter 23 (605007),Implements unit tests; includes Starter 23.
+29,Debugging Techniques,S1.0,S1.1,Starter 24 (605008),Covers debugging; includes Starter 24.
+30,Ongoing Group Project: Testing & Debugging,S1.0,S1.1,S1.1.e,PS1.b,Project assignment; integrates testing and file handling; takes precedence for recency.
+31,CS Careers Advanced,PS7.c,Starter 25 (605009),Explores CS careers; includes Starter 25.
+32,Industry Trends,PS7.c,Starter 26 (605010),Discusses industry trends; includes Starter 26.
+33,Portfolio Development,S7.2,S7.2.a,S7.2.b,PS7.b,Starter 27 (605011),Plans portfolio; includes Starter 27.
+34,Team Collaboration,PS7.c,Starter 28 (605012),Focuses on agile collaboration; includes Starter 28.
+35,Ongoing Group Project: Iteration Review,S7.1,S7.2,PS7.a,PS7.b,Project assignment; includes peer review; takes precedence for recency.
+36,Group Project: Inventory System Design,S1.0,S1.1,S5.0,S5.1,S6.0,S6.1,PS5.a,PS5.b,Starter 29 (605013),Project assignment; designs inventory system; takes precedence for recency.
+37,Group Project: Inventory System Implementation,S1.0,S1.1,S5.0,S5.1,S5.2,PS5.a,PS5.b,PS5.c,Starter 30 (605014),Project assignment; implements inventory system; takes precedence for recency.
+38,Group Project: Inventory System Testing,S1.0,S1.1,PS5.a,PS5.b,Starter 31 (605015),Project assignment; tests inventory system; takes precedence for recency.
+39,Group Project: Inventory System Presentation,S7.0,S7.1,S7.2,PS7.a,PS7.b,Starter 32 (605016),Project assignment; presents inventory system; takes precedence for recency.
+40,Semester 1 Reflection,S7.2,PS7.b,Starter 33 (605017),Reflects on Semester 1; includes Starter 33; portfolio-focused.
+41,Graph Data Structures,S4.0,PS4,Starter 34 (605018),Implements graphs; includes Starter 34; contributes to PS4.
+42,Graph Traversal,S4.0,PS4,Starter 35 (605454),Implements BFS; includes Starter 35; contributes to PS4.
+43,Shortest Path Algorithms,S4.0,PS4,Starter 36 (606174),Implements Dijkstra’s algorithm; includes Starter 36; contributes to PS4.
+44,Dynamic Programming,S1.2,S1.2.a,S1.2.b,S1.2.c,Starter 37 (606473),Implements dynamic programming; includes Starter 37.
+45,Ongoing Group Project: Graph Algorithms,S4.0,PS4,Project assignment; integrates graph algorithms; takes precedence for recency.
+46,Advanced Design Patterns,S5.0,S5.1,S5.1.a,S5.1.b,Starter 38 (606739),Implements advanced design patterns; includes Starter 38.
+47,Refactoring Code,S1.0,S1.1,Starter 39 (607018),Refactors code; includes Starter 39.
+48,Version Control Basics,S6.0,S6.1,Starter 40 (607086),Covers Git basics; includes Starter 40.
+49,Collaborative Coding with Git,S6.0,S6.1,Starter 41 (607119),Implements collaborative Git workflows; includes Starter 41.
+50,Ongoing Group Project: Collaborative Coding,S6.0,S6.1,S7.1,PS7.a,Project assignment; uses Git and design patterns; takes precedence for recency.
+51,Introduction to Databases,PS1.a,Starter 42 (607408),Designs database schema; includes Starter 42.
+52,Database Queries,PS1.a,Starter 43 (607467),Implements SQL queries; includes Starter 43.
+53,Database Integration,PS1.a,Starter 44 (607655),Connects database to program; includes Starter 44.
+54,CRUD Operations,PS1.a,Starter 45 (608159),Implements CRUD operations; includes Starter 45.
+55,Ongoing Group Project: Database Integration,PS1.a,PS7.a,Project assignment; integrates database; takes precedence for recency.
+56,Agile Project Management,S6.0,S6.1,Starter 46 (608401),Covers Scrum; includes Starter 46.
+57,Team Roles in Agile,S6.0,S6.1,Starter 47 (608606),Explores agile roles; includes Starter 47.
+58,Ongoing Group Project: Agile Iteration,S6.0,S6.1,S7.1,PS7.a,Project assignment; applies agile practices; takes precedence for recency.
+59,Advanced CS Careers,PS7.c,Reflects on advanced CS careers; no starter assigned.
+60,Ongoing Group Project: Feature Enhancement,S7.1,PS7.a,Project assignment; adds emerging tech feature; takes precedence for recency.
+61,Portfolio Enhancement,S7.2,S7.2.a,S7.2.b,PS7.b,Enhances portfolio; no starter assigned.
+62,Technical Interviews,PS7.c,Prepares for coding interviews; no starter assigned.
+63,Ongoing Group Project: Portfolio Integration,S7.2,PS7.b,Project assignment; documents task app for portfolio; takes precedence for recency.
+64,Advanced OOP Techniques,S5.0,S5.1,S5.1.b,S5.4,S5.4.a,S5.4.b,S5.4.c,Implements advanced OOP; no starter assigned.
+65,Ongoing Group Project: OOP Enhancements,S5.0,S5.1,S5.4,PS5.a,PS5.b,Project assignment; enhances task app with OOP; takes precedence for recency.
+66,Priority Queues,S4.0,S4.2,PS4,Implements priority queues; no starter assigned.
+67,Balanced Trees,S4.0,PS4,Implements balanced trees; no starter assigned.
+68,Ongoing Group Project: Advanced Structures,S4.0,S4.2,PS4,Project assignment; integrates priority queues and trees; takes precedence for recency.
+69,Greedy Algorithms,S1.0,S1.1,Implements greedy algorithms; no starter assigned.
+70,Ongoing Group Project: Algorithm Optimization,S1.0,S1.1,Project assignment; optimizes algorithms; takes precedence for recency.
+71,Divide and Conquer,S1.0,S1.1,Implements divide-and-conquer; no starter assigned.
+72,Advanced Collaboration,PS7.c,Focuses on workplace skills; no starter assigned.
+73,Advanced Algorithms Review,S1.0,S1.1,S1.2,S4.0,Reviews algorithms; no starter assigned.
+74,Software Engineering Review,S6.0,S6.1,PS1.a,Reviews software engineering; no starter assigned.
+75,Individual Project: Portfolio App Design,S1.0,S1.1,S5.0,S6.0,PS5.a,PS5.b,Individual project; designs portfolio app; takes precedence for recency.
+76,Individual Project: Portfolio App Implementation,S1.0,S1.1,S5.0,S5.1,S5.2,PS5.a,PS5.b,PS5.c,Individual project; implements portfolio app; takes precedence for recency.
+77,Individual Project: Portfolio App Testing,S1.0,S1.1,PS5.a,PS5.b,Individual project; tests portfolio app; takes precedence for recency.
+78,Individual Project: Portfolio App Finalization,S1.0,S1.1,S7.1,S7.2,PS7.a,PS7.b,Individual project; finalizes portfolio app; takes precedence for recency.
+79,Individual Project: Portfolio App Presentation,S7.0,S7.1,S7.2,PS7.a,PS7.b,Individual project; presents portfolio app; takes precedence for recency.
+80,Course Reflection & Showcase,S7.2,PS7.b,Reflects on entire course; no starter assigned.
