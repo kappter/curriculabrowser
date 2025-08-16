@@ -1,0 +1,133 @@
+id,Standard,Description
+616234,S4.1,Demonstrate the ability to use stacks in programs.
+616235,S4.1.a,Declare stack structures.
+616236,S4.1.b,Initialize stacks.
+616237,S4.1.c,Check for empty and full stacks.
+616238,S4.1.d,Push on to and pop off values from stacks.
+616239,S4.1.e,Develop an application that utilizes stacks.
+616240,S4.2,Demonstrate the ability to use queues in programs.
+616241,S4.2.a,Declare queue structures.
+616242,S4.2.b,Check for empty and full queues.
+616243,S4.2.c,Initialize queues.
+616244,S4.2.d,Enqueue values on to and dequeue values off of queues.
+616245,S4.2.e,Develop an application that utilize queues.
+616246,S5.0,Students will design and implement advanced objected oriented concepts.
+616247,S5.1,Implement object-oriented programs.
+616248,S5.1.a,Create classes with minimal extraneous relationships (high cohesion and low coupling).
+616249,S5.1.b,Demonstrate and use composition and aggregation (HAS-A) relationships.
+616250,S5.1.c,Demonstrate the use of class variables (static variables).
+616251,S5.2,Implement inheritance in an objected oriented program.
+616252,S5.2.a,Utilize class hierarchies (parent-child relationships).
+616253,S5.2.b,Demonstrate IS-A relationships.
+616254,S5.2.c,Override methods. Understand how to call the overriding method from the child.
+616255,S5.2.d,Demonstrate the protected modifier.
+604992,Starter 8,Daily Starter 8
+604988,Starter 4,Daily Starter 4
+604993,Starter 9,Daily Starter 9
+604989,Starter 5,Daily Starter 5
+604994,Starter 10,Daily Starter 10
+616256,S5.2.e,Call a parent class constructor from the child's constructor.
+604995,Starter 11,Daily Starter 11
+604996,Starter 12,Daily Starter 12
+604990,Starter 6,Daily Starter 6
+604991,Starter 7,Daily Starter 7
+604997,Starter 13,Daily Starter 13
+616257,S5.3,Create and use abstract classes.
+604998,Starter 14,Daily Starter 14
+604999,Starter 15,Daily Starter 15
+616258,S5.3.a,Create and implement abstract classes.
+605000,Starter 16,Daily Starter 16
+616259,S5.3.b,Implement interfaces (purely abstract classes).
+605001,Starter 17,Daily Starter 17
+605002,Starter 18,Daily Starter 18
+616260,S5.3.c,Know difference between abstract and interface classes.
+605003,Starter 19,Daily Starter 19
+605004,Starter 20,Daily Starter 20
+616261,S5.4,Implement polymorphism.
+605005,Starter 21,Daily Starter 21
+605006,Starter 22,Daily Starter 22
+616262,S5.4.a,Demonstrate that a parent object variable can hold an instance of a child class.
+605007,Starter 23,Daily Starter 23
+616263,S5.4.b,Determine IS-A relationships via code (e.g. instanceof, typeof, isa).
+605008,Starter 24,Daily Starter 24
+605009,Starter 25,Daily Starter 25
+616264,S5.4.c,Demonstrate typecasting via method calls of inherited objects.
+605010,Starter 26,Daily Starter 26
+616265,S6.0,Students will use Unified Modeling Language (UML) to design object-oriented programs.
+605011,Starter 27,Daily Starter 27
+605012,Starter 28,Daily Starter 28
+616266,S6.1,Demonstrate the use of an UML in design.
+605013,Starter 29,Daily Starter 29
+605014,Starter 30,Daily Starter 30
+616267,S6.1.a,Create an activity diagram.
+605015,Starter 31,Daily Starter 31
+605016,Starter 32,Daily Starter 32
+616268,S6.1.b,Create a class diagram for the class hierarchy of a program.
+605017,Starter 33,Daily Starter 33
+616269,S6.1.c,Create a sequence diagram for a method.
+605018,Starter 34,Daily Starter 34
+605454,Starter 35,Daily Starter 35
+616270,S6.1.d,Translate diagrams to code.
+606174,Starter 36,Daily Starter 36
+616271,S7.0,Students will develop a program of significant complexity as part of a portfolio.
+606473,Starter 37,Daily Starter 37
+606739,Starter 38,Daily Starter 38
+616272,S7.1,Create an individual program of significant complexity.
+607018,Starter 39,Daily Starter 39
+607086,Starter 40,Daily Starter 40
+616273,S7.1.a,Create design documentation for the project.
+607119,Starter 41,Daily Starter 41
+616274,S7.1.b,Follow accepted object-oriented programming methodology when writing the code.
+607408,Starter 42,Daily Starter 42
+607467,Starter 43,Daily Starter 43
+616275,S7.2,Compile a portfolio of the individual and group programs developed.
+607655,Starter 44,Daily Starter 44
+608159,Starter 45,Daily Starter 45
+616276,S7.2.a,Include sample design work.
+608401,Starter 46,Daily Starter 46
+608606,Starter 47,Daily Starter 47
+616277,S7.2.b,Include sample program source code.
+616093,S3.1,Utilize multidimensional arrays.
+624425,PS1.a,Performance Skill: Develop advanced applications using input, calculations, output, IF structures, iteration, sub-programs, recursion, arrays, sorting and a database.
+616198,S2.1.a,Develop a binary search.
+616205,S1.0,Students will develop applications which make advanced use of the skills and concepts developed in Computer Programming 1 and Computer Programming 2.
+624426,PS1.b,Performance Skill: Demonstrate the ability to use random access files in a program.
+616206,S1.1,Demonstrate the ability to develop complex applications.
+624427,PS2.a,Performance Skill: Demonstrate the ability to search data structures using binary and hash searches comparing the efficiency between sequential and binary searches.
+616207,S1.1.a,Develop complex applications using input, calculations, and output.
+624428,PS2.b,Performance Skill: Demonstrate the ability to sort data structures using quadratic (n2) and binary (n log n) sorts comparing the efficiency between various sorts using Big-O notation.
+624429,PS4,Performance Skill: Demonstrate the ability to use linked lists, stacks, queues, and binary trees.
+624430,PS5.a,Performance Skill: Develop advanced application projects.
+624431,PS5.b,Performance Skill: Develop advanced applications using object-oriented programming.
+624432,PS5.c,Performance Skill: Create user-defined inherited classes demonstrating overloading techniques.
+624433,PS7.a,Performance Skill: Create an individual program of significant complexity and size (300-500 lines).
+624434,PS7.b,Performance Skill: Compile a portfolio of the individual and group programs developed during the course.
+624436,PS7.c,Performance Skill: Participate in a work-based learning experience such as a job shadow, internship, field trip to a software engineering firm or listen to an industry guest speaker and/or compete in a high school programming contest.
+632523,Starter 1,Daily Starter 1
+616208,S1.1.b,Develop complex applications using control structures (loops, if else, select, etc.)
+616209,S1.1.c,Develop complex applications in object-oriented programming
+616210,S1.1.d,Develop complex applications using data structures.
+616211,S1.1.e,Develop complex applications using files (sequential files).
+616212,S1.2,Utilize recursive algorithms.
+616213,S1.2.a,Analyze and solve recursive functions or methods.
+616214,S1.2.b,Utilize recursive algorithms to solve a problem.
+616215,S1.2.c,Identify the base case, recursive case, and action of each recursive function or method.
+616216,S1.2.d,(Optional) Understand the use of a recursive helper function or method.
+616217,S1.3,Create advanced functions and methods.
+616218,S1.3.a,Create and use overloaded constructors and methods.
+616219,S1.3.b,Create and use overloaded operators (C++).
+616220,S2.0,Students will use searching and sorting algorithms.
+616221,S2.1,Demonstrate the ability to search data structures in programs.
+616222,S2.1.b,Compare the efficiency and appropriateness of sequential and binary searches.
+616223,S2.2,Demonstrate the ability to sort data structures in programs.
+616224,S2.2.a,Sort arrays using iterative sorting algorithms (selection, insertion, bubble).
+616225,S2.2.b,Recognize recursive sorting algorithms (merge, quick, heap).
+616226,S2.2.c,Compare the efficiency of different sorting algorithms.
+616227,S3.0,Students will utilize multidimensional arrays.
+616228,S3.1.a,Initialize multidimensional arrays.
+616229,S3.1.b,Input and output data into and from multidimensional arrays.
+616231,S3.1.c,Perform operations on multidimensional arrays.
+616232,S3.1.d,Perform searches on multidimensional arrays.
+616233,S4.0,Students will properly employ dynamic data structures/ abstract data types (ADTs).
+632524,Starter 2,Daily Starter 2
+632525,Starter 3,Daily Starter 3
