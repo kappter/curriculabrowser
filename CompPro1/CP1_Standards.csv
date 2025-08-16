@@ -1,0 +1,25 @@
+ID,Standard,Description
+1001,Strand 1 Standard 1,Explore the differences between interpreted and compiled programming languages, as well as high-level versus low-level languages, using Processing as a context.
+1002,Strand 1 Standard 2,Navigate and utilize an Integrated Development Environment (IDE) for Processing, including compilation, execution, and debugging, while identifying syntax, runtime, and logic errors.
+1003,Strand 1 Performance Skills,Apply IDE skills to create, debug, and test a simple program in Processing, such as a basic animation or drawing.
+1004,Strand 2 Standard 1,Demonstrate proper programming style in Processing, including white space, naming conventions (camelCase, snake_case, PascalCase), constants vs variables, and output formatting for readability.
+1005,Strand 2 Standard 2,Understand and apply the Software Development Life Cycle (SDLC) phases (Requirements, Design, Implementation, Testing, Release) and design algorithms using UML diagrams, pseudocode, and top-down design for Processing projects.
+1006,Strand 2 Performance Skills,Apply SDLC and algorithm design to develop a complete Processing program, such as an animation, incorporating project planning and teamwork.
+1007,Strand 3 Standard 1,Understand input and output concepts in Processing, including the use of input/output devices like mouse and keyboard for interactive programs.
+1008,Strand 3 Standard 2,Utilize basic data types (Boolean, Integer, Float, String) and demonstrate proper variable declaration and initialization in Processing sketches.
+1009,Strand 3 Standard 3,Apply arithmetic operators (addition, subtraction, multiplication, division, modulus), comparison operators (<, >, ==), logical operators (AND, OR, NOT), and order of operations (PEMMDAS) in Processing programs.
+1010,Strand 3 Standard 4,Construct syntactically correct expressions using operators and operands in Processing, ensuring proper syntax for graphical outputs.
+1011,Strand 3 Standard 5,Implement functions in Processing, including built-in and user-defined functions, with an understanding of arguments, return values, and local vs global variable scope.
+1012,Strand 3 Standard 6,Utilize complex data types such as Strings and Arrays in Processing for data organization and visualization in sketches.
+1013,Strand 3 Performance Skills,Develop a Processing program integrating data types, functions, and expressions to create a visual output, demonstrating key programming concepts.
+1014,Strand 4 Standard 1,Implement IF statements, including ELSE IF and ELSE logic, with nesting for decision-making in Processing sketches.
+1015,Strand 4 Standard 2,Utilize loop structures (for loops, while loops) and loop exit strategies (e.g., break) in Processing, including handling infinite loops and nested loops for repetitive tasks.
+1016,Strand 4 Standard 3,Combine relational and logical operators in complex conditions within loops and IF statements in Processing programs.
+1017,Strand 4 Performance Skills,Develop a Processing program integrating IF statements and loops to create interactive visuals, applying control structures effectively.
+1018,Strand 5 Standard 1,Explore programming careers (e.g., team leader, analyst, developer, SME), programmer traits (problem-solving, collaboration, creativity), and industry trends (e.g., AI) in the context of Processing projects.
+1019,Strand 5 Standard 2,Analyze ethical issues in programming (piracy, privacy, copyright, automation) and the societal and workplace impact of software, using Processing applications as examples.
+1020,Strand 5 Performance Skills,Research and present a software development career, using Processing project examples to illustrate roles and responsibilities.
+1021,Workplace Skills,Demonstrate professional skills such as communication, teamwork, and accountability in the context of Processing project development.
+1022,Review,Review key programming terms, Processing syntax, and problem-solving strategies (decomposition, pattern recognition) through interactive exercises.
+1023,Assessment,Apply course concepts in Processing projects (Midterm, Final) and prepare for Skill Certification Test #820, demonstrating proficiency in programming and project development.
+1024,Wrap-up,Reflect on course progress and present learning outcomes from Processing projects, focusing on self-assessment and project showcase.
